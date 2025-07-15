@@ -105,7 +105,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
+    <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -132,7 +132,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-medium">Email</div>
-                  <div className="text-muted-foreground">john.doe@example.com</div>
+                  <div className="text-muted-foreground">tomasarizu13@gmail.com</div>
                 </div>
               </div>
 
@@ -142,7 +142,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-medium">Phone</div>
-                  <div className="text-muted-foreground">+1 (555) 123-4567</div>
+                  <div className="text-muted-foreground">+54 (011) 3574-3140</div>
                 </div>
               </div>
 
@@ -152,7 +152,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-medium">Location</div>
-                  <div className="text-muted-foreground">San Francisco, CA</div>
+                  <div className="text-muted-foreground">Buenos Aires, Argentina</div>
                 </div>
               </div>
             </div>
@@ -224,7 +224,12 @@ export default function Contact() {
                     {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full border-0"
+                    style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)', color: '#222' }}
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />

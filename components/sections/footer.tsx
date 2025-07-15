@@ -16,18 +16,21 @@ export default function Footer() {
 
           {/* Social Links */}
           <div className="flex justify-center space-x-4">
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Github className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Linkedin className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Twitter className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Mail className="h-5 w-5" />
-            </Button>
+            <a href="https://github.com/tomasArizu13" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Github className="h-5 w-5" />
+              </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/tomas-arizu-47ba1521a/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Linkedin className="h-5 w-5" />
+              </Button>
+            </a>
+            <a href="mailto:tomasarizu13@gmail.com" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Mail className="h-5 w-5" />
+              </Button>
+            </a>
           </div>
 
           {/* Copyright */}

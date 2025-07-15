@@ -75,10 +75,26 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 border-0"
+              style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)', color: '#222' }}
+              onClick={() => {
+                const el = document.querySelector('#projects');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               View My Work
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent">
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 py-6 bg-transparent"
+              onClick={() => {
+                const el = document.querySelector('#contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Get In Touch
             </Button>
           </div>
@@ -89,15 +105,21 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Github className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Linkedin className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform">
-              <Mail className="h-5 w-5" />
-            </Button>
+            <a href="https://github.com/tomasArizu13" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Github className="h-5 w-5" />
+              </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/tomas-arizu-47ba1521a/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Linkedin className="h-5 w-5" />
+              </Button>
+            </a>
+            <a href="mailto:tomasarizu13@gmail.com" className="hover:scale-110 transition-transform">
+              <Button variant="ghost" size="icon">
+                <Mail className="h-5 w-5" />
+              </Button>
+            </a>
           </div>
 
           {/* Scroll indicator */}

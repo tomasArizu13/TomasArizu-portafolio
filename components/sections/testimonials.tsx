@@ -88,7 +88,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-20">
+    <section id="testimonials" ref={sectionRef} className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${

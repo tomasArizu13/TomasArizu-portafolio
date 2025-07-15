@@ -11,15 +11,15 @@ const skills = [
   { name: "React/Next.js", level: 95 },
   { name: "TypeScript", level: 90 },
   { name: "Node.js", level: 85 },
-  { name: "Python", level: 80 },
+  { name: "Python", level: 60 },
   { name: "UI/UX Design", level: 88 },
-  { name: "Database Design", level: 82 },
+  { name: "Database Design", level: 62 },
 ]
 
 const stats = [
   { icon: Award, label: "Years Experience", value: "5+" },
   { icon: Users, label: "Happy Clients", value: "50+" },
-  { icon: Coffee, label: "Projects Completed", value: "100+" },
+  { icon: Coffee, label: "Projects Completed", value: "30+" },
 ]
 
 export default function About() {
@@ -57,7 +57,7 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background">
+    <section id="about" ref={sectionRef} className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Header - Always visible */}
         <div className="text-center mb-16">
@@ -84,16 +84,16 @@ export default function About() {
               </div>
 
               {/* Floating Stats Cards */}
-              <div className="absolute -bottom-6 -right-6 bg-background rounded-xl p-4 shadow-lg border">
+              <div className="absolute -bottom-6 -right-6 bg-white dark:bg-black rounded-xl p-4 shadow-lg border">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">5+</div>
                   <div className="text-sm text-muted-foreground">Years Exp.</div>
                 </div>
               </div>
 
-              <div className="absolute -top-6 -left-6 bg-background rounded-xl p-4 shadow-lg border">
+              <div className="absolute -top-6 -left-6 bg-white dark:bg-black rounded-xl p-4 shadow-lg border">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">100+</div>
+                  <div className="text-2xl font-bold text-primary">30+</div>
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </div>
               </div>
@@ -130,28 +130,38 @@ export default function About() {
 
               {/* Key Points */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-sm text-foreground">Full Stack Development</span>
+                  <span className="text-xs text-white dark:text-black">Full Stack Development</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-sm text-foreground">UI/UX Design</span>
+                  <span className="text-xs text-white dark:text-black">UI/UX Design</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-sm text-foreground">Mobile Development</span>
+                  <span className="text-xs text-white dark:text-black">Mobile Development</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-sm text-foreground">Cloud Architecture</span>
+                  <span className="text-xs text-white dark:text-black">Cloud Architecture</span>
                 </div>
               </div>
 
-              <Button className="mt-6">
-                <Download className="w-4 h-4 mr-2" />
-                Download Resume
-              </Button>
+              {/* Download Resume centrado */}
+              <div className="flex justify-center mt-12">
+                <div className="flex items-center space-x-2 rounded-2xl p-3" style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)' }}>
+                  <a
+                    href="/resume-tomas-arizu.pdf"
+                    download
+                    className="p-0 h-auto text-xs text-black flex items-center font-medium"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Resume
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
