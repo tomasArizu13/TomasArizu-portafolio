@@ -52,10 +52,24 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground dark:text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-foreground dark:text-white leading-tight" style={{overflow: 'visible'}}>
               Full Stack Developer
               <br />
-              <span className="text-secondary">& Designer</span>
+              <span
+                style={{
+                  background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  display: 'inline-block',
+                  paddingBottom: '0.2em',
+                  lineHeight: 1.2,
+                  overflow: 'visible',
+                }}
+              >
+                & Designer
+              </span>
             </h1>
           </div>
 
@@ -64,7 +78,7 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto mt-4">
               I create exceptional digital experiences that combine beautiful design with powerful functionality.
             </p>
           </div>
