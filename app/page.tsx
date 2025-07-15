@@ -48,10 +48,15 @@ export default function Portfolio() {
       <Navigation />
       <main>
         <Hero />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <About />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <Experience />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <Projects />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <Testimonials />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <Contact />
       </main>
       <Footer />

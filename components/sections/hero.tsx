@@ -78,7 +78,7 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto mt-4">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto mt-0.5">
               I create exceptional digital experiences that combine beautiful design with powerful functionality.
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function Hero() {
 
           {/* Social Links */}
           <div
-            className={`flex justify-center space-x-6 mt-2 transition-all duration-1000 delay-900 ${
+            className={`flex justify-center space-x-6 mt-0 transition-all duration-1000 delay-900 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
