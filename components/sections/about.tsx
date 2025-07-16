@@ -11,14 +11,14 @@ const skills = [
   { name: "React/Next.js", level: 95 },
   { name: "TypeScript", level: 90 },
   { name: "Node.js", level: 85 },
-  { name: "Python", level: 60 },
+  { name: "Firebase", level: 80 },
   { name: "UI/UX Design", level: 88 },
-  { name: "Database Design", level: 62 },
+  { name: "Vercel / Deployment", level: 85 },
 ]
 
 const stats = [
-  { icon: Award, label: "Years Experience", value: "5+" },
-  { icon: Users, label: "Happy Clients", value: "50+" },
+  { icon: Award, label: "Years Experience", value: "4+" },
+  { icon: Users, label: "MVPs Developed", value: "5+" },
   { icon: Coffee, label: "Projects Completed", value: "30+" },
 ]
 
@@ -86,7 +86,7 @@ export default function About() {
               {/* Floating Stats Cards */}
               <div className="absolute -bottom-6 -right-6 bg-white dark:bg-black rounded-xl p-4 shadow-lg border">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">5+</div>
+                  <div className="text-2xl font-bold text-primary">4+</div>
                   <div className="text-sm text-muted-foreground">Years Exp.</div>
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function About() {
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Hi, I'm Tomas Arizu</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  A passionate Full Stack Developer and Designer with over 5 years of experience creating exceptional
+                  A passionate Full Stack Developer and Designer with over 4 years of experience creating exceptional
                   digital experiences. I specialize in modern web technologies and love turning complex problems into
                   simple, beautiful solutions.
                 </p>
@@ -144,7 +144,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-xs text-white dark:text-black">Cloud Architecture</span>
+                  <span className="text-xs text-white dark:text-black">MVP Development</span>
                 </div>
               </div>
 

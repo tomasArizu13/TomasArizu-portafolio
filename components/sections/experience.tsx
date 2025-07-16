@@ -7,42 +7,34 @@ import { Building, Calendar, MapPin } from "lucide-react"
 
 const experiences = [
   {
-    title: "Senior Full Stack Developer",
-    company: "TechCorp Inc.",
-    location: "San Francisco, CA",
-    period: "2022 - Present",
+    title: "Junior Full Stack Developer",
+    company: "Digital House",
+    location: "Buenos Aires, AR",
+    period: "2021 - 2023",
     description:
-      "Lead development of scalable web applications using React, Node.js, and AWS. Mentored junior developers and implemented CI/CD pipelines.",
-    technologies: ["React", "Node.js", "AWS", "TypeScript", "PostgreSQL"],
+      "Completed an intensive full stack development program. Built projects using HTML, CSS, JavaScript, React, Node.js, and MongoDB. Acquired strong foundations in frontend and backend technologies.",
+    technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Firebase"],
   },
   {
-    title: "Full Stack Developer",
-    company: "StartupXYZ",
+    title: "Operations Specialist - Disney Project",
+    company: "Globant",
     location: "Remote",
-    period: "2020 - 2022",
+    period: "2024 - 2025",
     description:
-      "Built and maintained multiple client projects from conception to deployment. Collaborated with design teams to implement pixel-perfect UIs.",
-    technologies: ["Vue.js", "Express.js", "MongoDB", "Docker"],
+      "Worked as Operations Specialist on a large-scale Disney project. Supported the delivery team in agile processes, reporting, and project coordination across multiple squads.",
+    technologies: ["Jira", "Confluence", "Agile", "Excel", "Smartsheet"],
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Agency",
-    location: "New York, NY",
-    period: "2019 - 2020",
+    title: "Co-Founder & Product Developer",
+    company: "OneBite",
+    location: "Buenos Aires, AR",
+    period: "2024 - Present",
     description:
-      "Developed responsive websites and web applications for various clients. Focused on performance optimization and accessibility.",
-    technologies: ["JavaScript", "SASS", "Webpack", "PHP"],
+      "Designed and developed the MVP landing page for a premium gastronomic membership. Validated the product idea with over 40+ leads. Focused on UX/UI, strategy and business validation.",
+    technologies: ["Next.js", "TailwindCSS", "TypeScript", "Vercel", "Figma"],
   },
-  {
-    title: "Junior Developer",
-    company: "Local Tech Company",
-    location: "Boston, MA",
-    period: "2018 - 2019",
-    description:
-      "Started my professional journey building internal tools and learning best practices in software development.",
-    technologies: ["HTML", "CSS", "JavaScript", "MySQL"],
-  },
-]
+];
+
 
 export default function Experience() {
   const [visibleItems, setVisibleItems] = useState<number[]>([])

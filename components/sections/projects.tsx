@@ -11,58 +11,59 @@ import Image from "next/image"
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "OneBite Club – Exclusive Gourmet Experience",
     description:
-      "A full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-    shortDescription: "Modern e-commerce solution with advanced features",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+      "Landing page for OneBite, a private gastronomic club that offers exclusive, multisensory dining events in unique locations.",
+    shortDescription: "Private gourmet club experience website",
+    image: "/onebiteclub-screenshot.png", // reemplaza con tu propia captura
+    technologies: ["React", "Next.js", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://www.onebiteclub.com/",
+    githubUrl: "https://github.com/tomasArizu13/LandingPageOneBite",
     features: [
-      "User authentication and authorization",
-      "Product catalog with search and filters",
-      "Shopping cart and checkout process",
-      "Payment processing with Stripe",
-      "Order management system",
-      "Admin dashboard for inventory management",
+      "Hero con imagen de alta calidad y llamado a acción ‘Experiencias gastronómicas únicas’",
+      "Secciones: ¿Qué es?, ¿Para quién?, Beneficios, Cómo funciona, Equipo",
+      "Formulario de suscripción con CTA para unirse al club",
+      "Diseño responsive y estilizado tipografía elegante",
+      "Contenido SEO optimizado en español para captar foodies y profesionales",
+      "Integración de Google Analytics para seguimiento de conversiones",
     ],
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "PayBite – Programa de Fidelización Gastronómica",
     description:
-      "A collaborative task management application with real-time updates, team collaboration, and project tracking.",
-    shortDescription: "Collaborative productivity tool for teams",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+      "Landing page para PayBite, un programa exclusivo de fidelización para amantes de la buena gastronomía. Acumula BITES en cada salida y desbloquea beneficios especiales.",
+    shortDescription: "Programa de recompensas gastronómicas",
+    image: "/paybite-screenshot.png", // reemplazar con captura real
+    technologies: ["Next.js", "Tailwind CSS", "Vercel", "React"],
+    liveUrl: "https://pay-bite-kappa.vercel.app/",
+    githubUrl: "https://github.com/tomasArizu13/PayBite",
     features: [
-      "Real-time collaboration",
-      "Project and task organization",
-      "Team member management",
-      "Progress tracking and analytics",
-      "File attachments and comments",
-      "Mobile-responsive design",
+      "Sección hero con descripción del programa y CTA “Empieza a acumular bites”",
+      "Explicación clara del funcionamiento: acumular BITES, niveles, beneficios",
+      "Módulo de registro o suscripción (email / WhatsApp)",
+      "Diseño mobile-first con animaciones suaves al hacer scroll",
+      "Optimización SEO para captar usuarios que buscan programas gastronómicos",
+      "Despliegue en Vercel para rendimiento y carga rápida",
     ],
   },
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "A comprehensive weather dashboard with forecasts, maps, and historical data visualization.",
-    shortDescription: "Beautiful weather app with detailed forecasts",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["Vue.js", "D3.js", "Weather API", "Chart.js"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    title: "RealSync – AI Assistant for Real Estate",
+    description:
+      "Landing page for RealSync, the first AI real estate assistant that understands, responds, and helps close more sales.",
+    shortDescription: "Conversational AI assistant for real estate professionals",
+    image: "/realsync-screenshot.png",
+    technologies: ["Next.js", "Tailwind CSS", "Vercel", "React"],
+    liveUrl: "https://real-sync-phi.vercel.app/",
+    githubUrl: "https://github.com/tomasArizu13/RealSync",
     features: [
-      "Current weather conditions",
-      "7-day weather forecast",
-      "Interactive weather maps",
-      "Historical weather data",
-      "Location-based services",
-      "Responsive design",
+      "Hero con mensaje claro ‘El asistente inmobiliario que aumenta tus ventas’",
+      "Sección de características del asistente AI con íconos y animaciones",
+      "Demo interactiva o sección de chatbot simulado",
+      "Formulario de contacto para solicitar acceso o probar el asistente",
+      "Diseño optimizado para mobile con buena jerarquía visual",
+      "SEO básico y tracking de interés para conversiones",
     ],
   },
   {
@@ -209,10 +210,17 @@ export default function Projects() {
                     )}
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" variant="outline" className="flex-1 bg-transparent">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button size="sm" variant="outline" className="w-full bg-transparent">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </a>
                     <Button size="sm" variant="outline">
                       <Github className="w-4 h-4" />
                     </Button>

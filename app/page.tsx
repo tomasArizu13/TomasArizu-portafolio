@@ -55,8 +55,8 @@ export default function Portfolio() {
         <hr className="border-t border-muted-foreground my-0 opacity-40" />
         <Projects />
         <hr className="border-t border-muted-foreground my-0 opacity-40" />
-        <Testimonials />
-        <hr className="border-t border-muted-foreground my-0 opacity-40" />
+        {/* <Testimonials />
+        <hr className="border-t border-muted-foreground my-0 opacity-40" /> */}
         <Contact />
       </main>
       <Footer />
