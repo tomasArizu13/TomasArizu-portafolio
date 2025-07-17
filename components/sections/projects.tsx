@@ -68,58 +68,60 @@ const projects = [
   },
   {
     id: 4,
-    title: "Social Media Analytics",
-    description: "Analytics dashboard for social media performance tracking with data visualization and reporting.",
-    shortDescription: "Comprehensive social media analytics platform",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["React", "Python", "FastAPI", "PostgreSQL"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    title: "OneBite App – MVP Dining Experience",
+    description:
+      "Second version of OneBite: a minimal MVP web app offering exclusive access to premium dining experiences and curated recommendations for discerning food enthusiasts.",
+    shortDescription: "MVP app for gourmet dining recommendations",
+    image: "/onebite-app-screenshot.png", // reemplazá con tu captura real
+    technologies: ["Next.js", "Tailwind CSS", "Vercel", "React"],
+    liveUrl: "https://one-bite-app-mvp.vercel.app/",
+    githubUrl: "https://github.com/tomasArizu13/OneBiteAppMVP",
     features: [
-      "Multi-platform integration",
-      "Real-time analytics",
-      "Custom reporting",
-      "Data visualization",
-      "Performance insights",
-      "Export capabilities",
+      "Home con experiencia gastronómica destacada y call‑to‑action",
+      "Listado de experiencias con imágenes y descripciones",
+      "Sistema de suscripción (email) para acceso exclusivo",
+      "Diseño responsivo y refinado estilo gourmet",
+      "Buttons y hover interactions enfocados en UX",
+      "Implementación de SEO básico y deployment automático en Vercel",
     ],
   },
   {
     id: 5,
-    title: "Learning Management System",
-    description: "A complete LMS with course creation, student progress tracking, and interactive learning tools.",
-    shortDescription: "Modern learning platform for educators",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["Next.js", "Prisma", "MySQL", "AWS S3"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    title: "Inmobot – Tasador Inteligente de Propiedades",
+    description:
+      "Inmobot es un MVP de asistente inmobiliario que estima el valor de una propiedad en segundos. Utiliza inputs del usuario y análisis de mercado para ofrecer tasaciones automáticas con alta precisión.",
+    shortDescription: "MVP de IA para tasaciones automáticas de propiedades",
+    image: "/inmobot-screenshot.png", // colocá una captura en tu carpeta /public
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+    liveUrl: "https://real-sync-phi.vercel.app/", // actualizá si tenés nuevo dominio
+    githubUrl: "https://github.com/tomasArizu13/inmobot-frontend/tree/main/OneDrive/Escritorio/InmoBot/inmobot-frontend", // reemplazá si cambió
     features: [
-      "Course creation and management",
-      "Student enrollment system",
-      "Progress tracking",
-      "Interactive quizzes",
-      "Video streaming",
-      "Certificate generation",
+      "Formulario inteligente con validación de inputs",
+      "Algoritmo de estimación en base a zonas, m2 y estado del inmueble",
+      "Estadísticas en tiempo real: precisión, cantidad de tasaciones y promedio de tiempo",
+      "Diseño profesional y responsivo tipo SaaS",
+      "Landing con explicación de funcionamiento paso a paso",
+      "Despliegue continuo en Vercel",
     ],
   },
   {
     id: 6,
-    title: "Real Estate Platform",
-    description: "Property listing platform with advanced search, virtual tours, and agent management system.",
-    shortDescription: "Comprehensive real estate marketplace",
-    image: "/placeholder.svg?height=300&width=400",
-    technologies: ["React", "Node.js", "MongoDB", "Mapbox"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    title: "Hello Three.js – Intro a WebGL 3D",
+    description:
+      "Proyecto personal de exploración en 3D con Three.js. Utiliza geometrías, materiales, luces y animaciones en un entorno WebGL para lograr un efecto visual inmersivo. Ideal como base para futuras experiencias interactivas 3D.",
+    shortDescription: "Animación 3D interactiva con geometrías en Three.js",
+    image: "/threejs-hello.png", // subí esta imagen a tu carpeta public
+    technologies: ["Three.js", "React Three Fiber", "WebGL", "Vite"],
+    liveUrl: "https://webgl-3d-text-xi-blond.vercel.app/",
+    githubUrl: "https://github.com/tomasArizu13/threejs/tree/main/lessons", // ajustalo si cambió
     features: [
-      "Property listings with photos",
-      "Advanced search and filters",
-      "Interactive maps",
-      "Virtual tour integration",
-      "Agent profiles and contact",
-      "Mortgage calculator",
+      "Renderizado 3D interactivo en navegador con WebGL",
+      "Texto 3D animado con geometrías personalizadas",
+      "Cámara orbital con control de usuario",
+      "Simulación visual con materiales realistas",
+      "Diseño minimalista con enfoque artístico",
     ],
-  },
+  }  
 ]
 
 export default function Projects() {

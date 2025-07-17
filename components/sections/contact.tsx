@@ -159,7 +159,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <Card>
+          <Card style={{ border: '2px solid', borderImage: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%) 1' }}>
             <CardHeader>
               <CardTitle>Send a Message</CardTitle>
             </CardHeader>
@@ -226,7 +226,7 @@ export default function Contact() {
 
                   <Button
                     type="submit"
-                    className="w-full border-0"
+                    className="w-full border-0 transition-transform duration-200 hover:scale-105 hover:brightness-110"
                     style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)', color: '#222' }}
                     disabled={isSubmitting}
                   >

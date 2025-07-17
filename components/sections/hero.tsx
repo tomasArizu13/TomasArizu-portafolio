@@ -91,7 +91,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-6 border-0"
+              className="text-lg px-8 py-6 border-0 transition-transform duration-200 hover:scale-105 hover:brightness-110"
               style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)', color: '#222' }}
               onClick={() => {
                 const el = document.querySelector('#projects');
@@ -103,7 +103,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-6 bg-transparent"
+              className="text-lg px-8 py-6 bg-transparent transition-transform duration-200 hover:scale-105 hover:brightness-110"
               onClick={() => {
                 const el = document.querySelector('#contact');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
