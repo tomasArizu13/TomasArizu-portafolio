@@ -9,13 +9,13 @@ import Footer from "@/components/sections/footer"
 import Navigation from "@/components/navigation"
 
 export const metadata: Metadata = {
-  title: "Tomas Arizu - Full Stack Developer & Designer",
+  title: "Tomas Arizu - Product & Tech Builder",
   description:
     "Professional portfolio of Tomas Arizu, a full stack developer and designer specializing in modern web applications and user experiences.",
   keywords: ["developer", "designer", "portfolio", "react", "nextjs", "typescript"],
   authors: [{ name: "Tomas Arizu" }],
   openGraph: {
-    title: "Tomas Arizu - Full Stack Developer & Designer",
+    title: "Tomas Arizu - Product & Tech Builder",
     description: "Professional portfolio showcasing modern web development and design work.",
     url: "https://tomasarizu.com",
     siteName: "Tomas Arizu Portfolio",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tomas Arizu - Full Stack Developer & Designer",
+    title: "Tomas Arizu - Product & Tech Builder",
     description: "Professional portfolio showcasing modern web development and design work.",
     images: ["/og-image.jpg"],
   },

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Moon, Sun, Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useLanguage } from "@/components/language-context";
 
@@ -79,20 +79,24 @@ export default function Navigation() {
                 {item.name}
               </button>
             ))}
+            {/* Nuevo selector de idioma estético */}
             <div className="relative" ref={langMenuRef}>
               <button
-                className="text-sm font-medium px-3 py-2 rounded-md border border-muted-foreground bg-background hover:bg-muted-foreground/10 transition-colors flex items-center gap-2"
+                className="flex items-center gap-2 px-3 py-2 rounded-md border border-muted-foreground bg-background hover:bg-muted-foreground/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
                 aria-haspopup="listbox"
                 aria-expanded={openLang}
                 onClick={() => setOpenLang((prev) => !prev)}
               >
-                {language === "en" ? "English" : "Español"}
+                <Globe className="w-5 h-5 text-primary" />
+                <span className="font-medium">
+                  {language === "en" ? "English" : "Español"}
+                </span>
                 <svg className={`w-4 h-4 transition-transform ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
               {openLang && (
-                <div className="absolute right-0 mt-2 w-28 rounded-md shadow-lg bg-background border border-muted-foreground z-50">
+                <div className="absolute right-0 mt-2 w-32 rounded-lg shadow-xl bg-background border border-muted-foreground z-50 animate-fade-in">
                   <button
-                    className={`block w-full text-left px-4 py-2 text-sm hover:bg-muted-foreground/10 ${language === "en" ? "font-bold" : ""}`}
+                    className={`block w-full text-left px-4 py-2 text-sm rounded-t-lg hover:bg-primary/10 transition-colors ${language === "en" ? "font-bold text-primary" : ""}`}
                     onClick={() => {
                       setLanguage("en");
                       setOpenLang(false);
@@ -101,7 +105,7 @@ export default function Navigation() {
                     English
                   </button>
                   <button
-                    className={`block w-full text-left px-4 py-2 text-sm hover:bg-muted-foreground/10 ${language === "es" ? "font-bold" : ""}`}
+                    className={`block w-full text-left px-4 py-2 text-sm rounded-b-lg hover:bg-primary/10 transition-colors ${language === "es" ? "font-bold text-primary" : ""}`}
                     onClick={() => {
                       setLanguage("es");
                       setOpenLang(false);
@@ -143,6 +147,43 @@ export default function Navigation() {
                   {item.name}
                 </button>
               ))}
+              {/* Selector de idioma en mobile */}
+              <div className="relative mt-2" ref={langMenuRef}>
+                <button
+                  className="flex items-center gap-2 px-3 py-2 rounded-md border border-muted-foreground bg-background hover:bg-muted-foreground/10 transition-colors w-full focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  aria-haspopup="listbox"
+                  aria-expanded={openLang}
+                  onClick={() => setOpenLang((prev) => !prev)}
+                >
+                  <Globe className="w-5 h-5 text-primary" />
+                  <span className="font-medium">
+                    {language === "en" ? "English" : "Español"}
+                  </span>
+                  <svg className={`w-4 h-4 transition-transform ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {openLang && (
+                  <div className="absolute right-0 mt-2 w-32 rounded-lg shadow-xl bg-background border border-muted-foreground z-50 animate-fade-in">
+                    <button
+                      className={`block w-full text-left px-4 py-2 text-sm rounded-t-lg hover:bg-primary/10 transition-colors ${language === "en" ? "font-bold text-primary" : ""}`}
+                      onClick={() => {
+                        setLanguage("en");
+                        setOpenLang(false);
+                      }}
+                    >
+                      English
+                    </button>
+                    <button
+                      className={`block w-full text-left px-4 py-2 text-sm rounded-b-lg hover:bg-primary/10 transition-colors ${language === "es" ? "font-bold text-primary" : ""}`}
+                      onClick={() => {
+                        setLanguage("es");
+                        setOpenLang(false);
+                      }}
+                    >
+                      Español
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

@@ -16,7 +16,7 @@ const es = {
     title: "Sobre mí",
     subtitle: "Apasionado por crear soluciones digitales que marcan la diferencia",
     hi: "Hola, soy Tomas Arizu",
-    content1: "Desarrollador y diseñador Full Stack con más de 5 años de experiencia creando experiencias digitales excepcionales. Me especializo en tecnologías web modernas y me encanta convertir problemas complejos en soluciones simples y hermosas.",
+    content1: "Desarrollador y diseñador Full Stack con más de 4 años de experiencia creando experiencias digitales excepcionales. Me especializo en tecnologías web modernas y me encanta convertir problemas complejos en soluciones simples y hermosas.",
     content2: "Mi camino en el desarrollo web comenzó con la curiosidad por cómo funcionan los sitios, y evolucionó hacia una pasión por crear aplicaciones que no solo se vean bien, sino que también ofrezcan experiencias de usuario fluidas. Creo en escribir código limpio, mantenible y estar siempre actualizado con las mejores prácticas del sector.",
     content3: "Cuando no estoy programando, me encontrarás explorando nuevas tecnologías, contribuyendo a proyectos open source, mentoreando a otros desarrolladores o disfrutando un buen café mientras pienso la próxima gran idea.",
     keypoints: [
