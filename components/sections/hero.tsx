@@ -4,9 +4,11 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
 import Image from "next/image"
+import { useTranslation } from "@/components/language-context";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
+  const t = useTranslation();
 
   useEffect(() => {
     setIsVisible(true)
@@ -53,8 +55,6 @@ export default function Hero() {
             }`}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-foreground dark:text-white leading-tight" style={{overflow: 'visible'}}>
-              Full Stack Developer
-              <br />
               <span
                 style={{
                   background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)',
@@ -68,8 +68,10 @@ export default function Hero() {
                   overflow: 'visible',
                 }}
               >
-                & Designer
+                Product
               </span>
+              <br />
+              & Tech Builder
             </h1>
           </div>
 
@@ -79,7 +81,7 @@ export default function Hero() {
             }`}
           >
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto mt-0.5">
-              I create exceptional digital experiences that combine beautiful design with powerful functionality.
+              {t.hero.description}
             </p>
           </div>
 
@@ -98,7 +100,7 @@ export default function Hero() {
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              View My Work
+              {t.hero.viewWork}
             </Button>
             <Button
               size="lg"
@@ -109,7 +111,7 @@ export default function Hero() {
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Get In Touch
+              {t.hero.getInTouch}
             </Button>
           </div>
 

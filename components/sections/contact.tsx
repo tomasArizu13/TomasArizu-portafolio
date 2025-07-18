@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslation } from "@/components/language-context";
 
 interface FormData {
   name: string
@@ -36,28 +37,29 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const { toast } = useToast()
+  const t = useTranslation();
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required"
+      newErrors.name = t.contact.name + " is required"
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = t.contact.email + " is required"
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address"
+      newErrors.email = t.contact.email + ": Please enter a valid email address"
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required"
+      newErrors.subject = t.contact.subject + " is required"
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required"
+      newErrors.message = t.contact.message + " is required"
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters long"
+      newErrors.message = t.contact.message + ": Message must be at least 10 characters long"
     }
 
     setErrors(newErrors)
@@ -108,9 +110,9 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.contact.title}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Let's discuss how we can work together
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -118,10 +120,9 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-bold mb-6">{t.contact.letsConnect}</h3>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                I'm always interested in new opportunities and exciting projects. Whether you have a question, want to
-                discuss a project, or just want to say hello, I'd love to hear from you.
+                {t.contact.letsConnectDesc}
               </p>
             </div>
 
@@ -131,8 +132,8 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium">Email</div>
-                  <div className="text-muted-foreground">tomasarizu13@gmail.com</div>
+                  <div className="font-medium">{t.contact.emailLabel}</div>
+                  <div className="text-muted-foreground">{t.contact.emailValue}</div>
                 </div>
               </div>
 
@@ -141,8 +142,8 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium">Phone</div>
-                  <div className="text-muted-foreground">+54 (011) 3574-3140</div>
+                  <div className="font-medium">{t.contact.phoneLabel}</div>
+                  <div className="text-muted-foreground">{t.contact.phoneValue}</div>
                 </div>
               </div>
 
@@ -151,8 +152,8 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-medium">Location</div>
-                  <div className="text-muted-foreground">Buenos Aires, Argentina</div>
+                  <div className="font-medium">{t.contact.locationLabel}</div>
+                  <div className="text-muted-foreground">{t.contact.locationValue}</div>
                 </div>
               </div>
             </div>
@@ -161,25 +162,25 @@ export default function Contact() {
           {/* Contact Form */}
           <Card style={{ border: '2px solid', borderImage: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%) 1' }}>
             <CardHeader>
-              <CardTitle>Send a Message</CardTitle>
+              <CardTitle>{t.contact.sendMessage}</CardTitle>
             </CardHeader>
             <CardContent>
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+                  <h3 className="text-xl font-semibold mb-2">{t.contact.sent}</h3>
                   <p className="text-muted-foreground">
-                    Thank you for your message. I'll get back to you within 24 hours.
+                    {t.contact.sentDesc}
                   </p>
                   <Button className="mt-4" onClick={() => setIsSubmitted(false)}>
-                    Send Another Message
+                    {t.contact.sendAnother}
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Name *</Label>
+                      <Label htmlFor="name">{t.contact.name}</Label>
                       <Input
                         id="name"
                         value={formData.name}
@@ -189,7 +190,7 @@ export default function Contact() {
                       {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">{t.contact.email}</Label>
                       <Input
                         id="email"
                         type="email"
@@ -202,7 +203,7 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject *</Label>
+                    <Label htmlFor="subject">{t.contact.subject}</Label>
                     <Input
                       id="subject"
                       value={formData.subject}
@@ -213,7 +214,7 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">{t.contact.message}</Label>
                     <Textarea
                       id="message"
                       rows={5}
@@ -233,12 +234,12 @@ export default function Contact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                        Sending...
+                        {t.contact.sending}
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        {t.contact.send}
                       </>
                     )}
                   </Button>

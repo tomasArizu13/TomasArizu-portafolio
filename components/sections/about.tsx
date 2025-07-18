@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
 import { Download, Award, Users, Coffee } from "lucide-react"
 import Image from "next/image"
+import { useTranslation } from "@/components/language-context";
 
 const skills = [
   { name: "React/Next.js", level: 95 },
@@ -26,6 +27,7 @@ export default function About() {
   const [isVisible, setIsVisible] = useState(false)
   const [animatedSkills, setAnimatedSkills] = useState(skills.map(() => 0))
   const sectionRef = useRef<HTMLElement>(null)
+  const t = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,9 +63,9 @@ export default function About() {
       <div className="container mx-auto px-4">
         {/* Header - Always visible */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">About Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">{t.about.title}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Passionate about creating digital solutions that make a difference
+            {t.about.subtitle}
           </p>
         </div>
 
@@ -106,46 +108,30 @@ export default function About() {
           >
             <div className="space-y-6">
               <div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground">Hi, I'm Tomas Arizu</h3>
+                <h3 className="text-2xl font-bold mb-4 text-foreground">{t.about.hi}</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  A passionate Full Stack Developer and Designer with over 4 years of experience creating exceptional
-                  digital experiences. I specialize in modern web technologies and love turning complex problems into
-                  simple, beautiful solutions.
+                  {t.about.content1}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  My journey in web development started with a curiosity about how websites work, and it has evolved
-                  into a deep passion for creating applications that not only look great but also provide seamless user
-                  experiences. I believe in writing clean, maintainable code and staying up-to-date with the latest
-                  industry trends and best practices.
+                  {t.about.content2}
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed">
-                  When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
-                  mentoring aspiring developers, or enjoying a good cup of coffee while brainstorming the next big idea.
+                  {t.about.content3}
                 </p>
               </div>
 
               {/* Key Points */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-xs text-white dark:text-black">Full Stack Development</span>
-                </div>
-                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-xs text-white dark:text-black">UI/UX Design</span>
-                </div>
-                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-xs text-white dark:text-black">Mobile Development</span>
-                </div>
-                <div className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-xs text-white dark:text-black">MVP Development</span>
-                </div>
+                {t.about.keypoints.map((point: string, idx: number) => (
+                  <div key={idx} className="flex items-center space-x-2 rounded-2xl p-2 bg-black dark:bg-white">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-xs text-white dark:text-black">{point}</span>
+                  </div>
+                ))}
               </div>
 
               {/* Download Resume centrado */}
@@ -153,12 +139,13 @@ export default function About() {
                 <div className="flex items-center space-x-2 rounded-2xl p-3" style={{ background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)' }}>
                   <a
                     href="/resume-tomas-arizu.pdf"
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-0 h-auto text-xs text-black flex items-center font-medium"
                     style={{ textDecoration: "none" }}
                   >
                     <Download className="w-4 h-4 mr-2" />
-                    Download Resume
+                    {t.about.download}
                   </a>
                 </div>
               </div>
@@ -187,7 +174,7 @@ export default function About() {
         >
           <Card>
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Technical Skills</h3>
+              <h3 className="text-2xl font-bold mb-8 text-center text-foreground">{t.about.skills}</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {skills.map((skill, index) => (
                   <div key={skill.name} className="space-y-2">
@@ -195,7 +182,7 @@ export default function About() {
                       <span className="font-medium text-foreground">{skill.name}</span>
                       <span className="text-sm text-muted-foreground">{animatedSkills[index]}%</span>
                     </div>
-                    <Progress value={animatedSkills[index]} className="h-2" />
+                    <Progress value={animatedSkills[index]} />
                   </div>
                 ))}
               </div>

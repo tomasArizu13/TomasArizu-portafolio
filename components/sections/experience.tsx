@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Building, Calendar, MapPin } from "lucide-react"
+import { useTranslation } from "@/components/language-context";
 
 const experiences = [
   {
@@ -40,6 +41,7 @@ export default function Experience() {
   const [visibleItems, setVisibleItems] = useState<number[]>([])
   const sectionRef = useRef<HTMLElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+  const t = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,9 +69,9 @@ export default function Experience() {
     <section id="experience" ref={sectionRef} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Experience</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.experience.title}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My professional journey and the experiences that shaped my expertise
+            {t.experience.subtitle}
           </p>
         </div>
 

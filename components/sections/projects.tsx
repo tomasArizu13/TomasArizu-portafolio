@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { ExternalLink, Github, Eye } from "lucide-react"
 import Image from "next/image"
+import { useTranslation } from "@/components/language-context";
 
 const projects = [
   {
@@ -129,6 +130,7 @@ export default function Projects() {
   const [visibleItems, setVisibleItems] = useState<number[]>([])
   const sectionRef = useRef<HTMLElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+  const t = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -156,9 +158,9 @@ export default function Projects() {
     <section id="projects" ref={sectionRef} className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent work and the technologies I'm passionate about
+            {t.projects.subtitle}
           </p>
         </div>
 
@@ -191,7 +193,7 @@ export default function Projects() {
                         className="bg-white text-black hover:bg-white/90"
                       >
                         <Eye className="w-4 h-4 mr-2" />
-                        View Details
+                        {t.projects.viewDetails}
                       </Button>
                     </div>
                   </div>
@@ -218,14 +220,20 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex-1"
                     >
-                      <Button size="sm" variant="outline" className="w-full bg-transparent">
+                      <Button size="lg" variant="outline" className="w-full bg-transparent">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
+                        {t.projects.liveDemo}
                       </Button>
                     </a>
-                    <Button size="sm" variant="outline">
-                      <Github className="w-4 h-4" />
-                    </Button>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button size="icon" variant="outline" className="w-10 h-10">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -253,9 +261,9 @@ export default function Projects() {
                   />
                 </div>
                 <div>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{selectedProject.description}</p>
+                  <p className="mb-4 leading-relaxed text-foreground dark:text-muted-foreground">{selectedProject.description}</p>
                   <div className="mb-4">
-                    <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                    <h4 className="font-semibold mb-2">{t.projects.technologies}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech) => (
                         <Badge key={tech} variant="secondary">
@@ -264,23 +272,37 @@ export default function Projects() {
                       ))}
                     </div>
                   </div>
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2">Key Features:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                      {selectedProject.features.map((feature, index) => (
-                        <li key={index}>{feature}</li>
+                  <div className="mb-4">
+                    <h4 className="font-semibold mb-2">{t.projects.features}</h4>
+                    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                      {selectedProject.features.map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="flex space-x-4">
-                    <Button className="flex-1">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Live Site
-                    </Button>
-                    <Button variant="outline">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source Code
-                    </Button>
+                  <div className="flex space-x-2 mt-4">
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button size="sm" variant="outline" className="w-full bg-transparent">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        {t.projects.viewLive}
+                      </Button>
+                    </a>
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button size="sm" variant="outline" className="w-full bg-transparent">
+                        <Github className="w-4 h-4 mr-2" />
+                        {t.projects.sourceCode}
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>
