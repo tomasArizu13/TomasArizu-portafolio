@@ -31,7 +31,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "PayBite – Programa de Fidelización Gastronómica",
+    title: "PayBite – Programa de Fidelización",
     description:
       "Landing page para PayBite, un programa exclusivo de fidelización para amantes de la buena gastronomía. Acumula BITES en cada salida y desbloquea beneficios especiales.",
     shortDescription: "Programa de recompensas gastronómicas",
@@ -88,7 +88,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "Inmobot – Tasador Inteligente de Propiedades",
+    title: "Inmobot – Tasador Inteligente",
     description:
       "Inmobot es un MVP de asistente inmobiliario que estima el valor de una propiedad en segundos. Utiliza inputs del usuario y análisis de mercado para ofrecer tasaciones automáticas con alta precisión.",
     shortDescription: "MVP de IA para tasaciones automáticas de propiedades",
