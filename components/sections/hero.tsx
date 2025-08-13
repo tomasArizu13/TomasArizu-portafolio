@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Mobile: Image first, Desktop: Text first */}
-          <div className="order-2 lg:order-1 flex-1 text-left max-w-2xl">
+          <div className="order-2 lg:order-1 flex-1 text-center lg:text-left max-w-2xl">
             {/* Animated headline */}
             <div
               className={`transition-all duration-1000 delay-300 ${
@@ -132,7 +132,7 @@ export default function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <Image
                 src="/profile-tomas-arizu.jpg"
                 alt="Tomas Arizu"
