@@ -8,6 +8,55 @@ import { Download, Award, Users, Coffee } from "lucide-react"
 import Image from "next/image"
 import { useTranslation } from "@/components/language-context";
 
+// Hook para efecto 3D parallax con mouse
+const useParallax3D = (ref: React.RefObject<HTMLElement>) => {
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Calcular la rotación basada en la posición del mouse
+      const rotateX = (y - centerY) / 15;
+      const rotateY = (centerX - x) / 15;
+      
+      const image = element.querySelector('#about-image') as HTMLElement;
+      if (image) {
+        image.style.transform = `
+          perspective(1000px) 
+          rotateX(${-rotateX}deg) 
+          rotateY(${rotateY}deg) 
+          scale(1.05)
+          translateZ(30px)
+        `;
+        image.style.transition = 'transform 0.1s ease-out';
+      }
+    };
+
+    const handleMouseLeave = () => {
+      const image = element.querySelector('#about-image') as HTMLElement;
+      if (image) {
+        image.style.transition = 'transform 0.5s ease-out';
+        image.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05) translateZ(0px)';
+      }
+    };
+
+    element.addEventListener('mousemove', handleMouseMove);
+    element.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      element.removeEventListener('mousemove', handleMouseMove);
+      element.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [ref]);
+};
+
 const skills = [
   { name: "React/Next.js", level: 95 },
   { name: "TypeScript", level: 90 },
@@ -27,7 +76,10 @@ export default function About() {
   const [isVisible, setIsVisible] = useState(false)
   const [animatedSkills, setAnimatedSkills] = useState(skills.map(() => 0))
   const sectionRef = useRef<HTMLElement>(null)
+  const imageContainerRef = useRef<HTMLDivElement>(null)
   const t = useTranslation();
+  
+  useParallax3D(imageContainerRef);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,8 +111,37 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-muted">
-      <div className="container mx-auto px-4">
+    <section id="about" ref={sectionRef} className="py-20 bg-muted relative overflow-hidden">
+      {/* Animated background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15 animate-gradient-flow" />
+        
+        {/* Floating particles - more visible */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/40 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-20 w-60 h-60 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-32 left-1/4 w-48 h-48 bg-[#b6d464]/35 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-[#ffe066]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        
+        {/* Glowing orbs - more intense */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-[#b6d464]/25 to-[#ffe066]/25 rounded-full blur-3xl animate-glow-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[#ffe066]/25 to-[#b6d464]/25 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '2s' }} />
+        
+        {/* Additional large orbs */}
+        <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#b6d464]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/2 right-0 w-80 h-80 bg-[#ffe066]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
+        
+        {/* Animated grid pattern - more visible */}
+        <div className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: 'linear-gradient(#b6d464 1px, transparent 1px), linear-gradient(90deg, #b6d464 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+            animation: 'wave 25s ease-in-out infinite'
+          }}
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header - Always visible */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">{t.about.title}</h2>
@@ -74,15 +155,68 @@ export default function About() {
           <div
             className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-70 -translate-x-5"}`}
           >
-            <div className="relative">
-              <div className="relative w-full h-[500px] rounded-2xl overflow-hidden bg-muted">
-                <Image
-                  src="/fondo-sur.jpg"
-                  alt="Tomas Arizu - Professional Developer"
-                  fill
-                  className="object-cover"
+            <div className="relative group">
+              {/* Animated gradient border */}
+              <div className="absolute -inset-2 rounded-2xl overflow-hidden">
+                <div 
+                  className="absolute inset-0 rounded-2xl animate-gradient-flow opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 50%, #b6d464 100%)',
+                    backgroundSize: '200% 200%',
+                    animation: 'gradientShift 3s ease infinite'
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-secondary/10" />
+                <div className="absolute inset-[3px] rounded-2xl bg-muted" />
+              </div>
+              
+              {/* Glow effect */}
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-[#b6d464]/30 via-[#ffe066]/30 to-[#b6d464]/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div 
+                ref={imageContainerRef}
+                className="relative w-full h-[500px] rounded-2xl overflow-hidden bg-muted cursor-none"
+              >
+                {/* Image with 3D tilt effect */}
+                <div 
+                  className="relative w-full h-full"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px',
+                  }}
+                >
+                  <Image
+                    src="/fondo-sur.jpg"
+                    alt="Tomas Arizu - Professional Developer"
+                    fill
+                    className="object-cover"
+                    id="about-image"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05)',
+                    }}
+                  />
+                </div>
+                
+                {/* Overlay gradient with animation */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-secondary/10 group-hover:from-primary/30 group-hover:to-secondary/20 transition-all duration-300" />
+                
+                {/* Animated particles on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 left-4 w-3 h-3 bg-[#b6d464] rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+                  <div className="absolute top-8 right-8 w-2.5 h-2.5 bg-[#ffe066] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <div className="absolute bottom-4 right-4 w-3 h-3 bg-[#b6d464] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+                  <div className="absolute bottom-8 left-8 w-2.5 h-2.5 bg-[#ffe066] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
+                </div>
+                
+                {/* Shimmer effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12"
+                    style={{
+                      animation: 'shimmer 2s ease-in-out infinite'
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Floating Stats Cards */}

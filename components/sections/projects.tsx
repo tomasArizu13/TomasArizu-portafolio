@@ -155,8 +155,33 @@ export default function Projects() {
   }, [visibleItems])
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-muted">
-      <div className="container mx-auto px-4">
+    <section id="projects" ref={sectionRef} className="py-20 bg-muted relative overflow-hidden">
+      {/* Animated background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 animate-gradient-flow" />
+        
+        {/* Floating colorful orbs - much larger and more visible */}
+        <div className="absolute top-24 left-16 w-72 h-72 bg-[#b6d464]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-32 right-24 w-88 h-88 bg-[#ffe066]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2.5s' }} />
+        <div className="absolute bottom-28 left-1/3 w-64 h-64 bg-[#b6d464]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '5s' }} />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '7.5s' }} />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-[#b6d464]/30 to-[#ffe066]/30 rounded-full blur-3xl animate-glow-pulse" />
+        
+        {/* Animated particles - larger */}
+        <div className="absolute top-40 left-1/4 w-6 h-6 bg-[#b6d464] rounded-full opacity-80 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-60 right-1/3 w-5 h-5 bg-[#ffe066] rounded-full opacity-80 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-40 left-1/2 w-4 h-4 bg-[#b6d464] rounded-full opacity-80 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '5.5s' }} />
+        <div className="absolute bottom-60 right-1/5 w-7 h-7 bg-[#ffe066] rounded-full opacity-80 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '8s' }} />
+        <div className="absolute top-1/3 left-1/5 w-5 h-5 bg-[#b6d464] rounded-full opacity-75 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-1/3 right-1/5 w-6 h-6 bg-[#ffe066] rounded-full opacity-75 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '6s' }} />
+        
+        {/* Radial gradient effects - more visible */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#b6d464]/15 rounded-full blur-3xl animate-wave" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#ffe066]/15 rounded-full blur-3xl animate-wave" style={{ animationDelay: '10s' }} />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.projects.title}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -176,29 +201,62 @@ export default function Projects() {
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={400}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              <div className="relative group">
+                {/* Outer animated gradient border - thick and visible */}
+                <div className="absolute -inset-2 rounded-2xl overflow-hidden">
+                  <div 
+                    className="absolute inset-0 rounded-2xl animate-gradient-flow"
+                    style={{
+                      background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 50%, #b6d464 100%)',
+                      backgroundSize: '200% 200%',
+                      animation: 'gradientShift 3s ease infinite',
+                      opacity: 0.8
+                    }}
                   />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex space-x-4">
+                  <div className="absolute inset-[3px] rounded-2xl bg-muted" />
+                </div>
+                
+                {/* Secondary border layer */}
+                <div className="absolute -inset-[1px] rounded-2xl border-2 border-transparent group-hover:border-[#b6d464]/40 transition-all duration-300" />
+                
+                {/* Inner glow effect - more intense */}
+                <div className="absolute -inset-3 rounded-2xl bg-gradient-to-r from-[#b6d464]/30 via-[#ffe066]/30 to-[#b6d464]/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Animated corner accents */}
+                <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#b6d464] rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#ffe066] rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.1s' }} />
+                <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#ffe066] rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.2s' }} />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#b6d464] rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.3s' }} />
+                
+                <Card className="relative border-[3px] border-transparent group-hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 rounded-2xl overflow-hidden bg-card">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={400}
+                      height={300}
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    {/* Animated border on image */}
+                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#b6d464]/50 transition-all duration-300 rounded-t-2xl" />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                       <Button
                         size="sm"
                         onClick={() => setSelectedProject(project)}
-                        className="bg-white text-black hover:bg-white/90"
+                        className="bg-white text-black hover:bg-white/90 rounded-full px-6"
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         {t.projects.viewDetails}
                       </Button>
                     </div>
                   </div>
-                </div>
-                <CardContent className="p-6">
+                  <CardContent className="p-6 relative">
+                    {/* Corner accent dots */}
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-[#b6d464] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-2 left-2 w-2 h-2 bg-[#ffe066] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.1s' }} />
+                    <div className="absolute bottom-2 right-2 w-2 h-2 bg-[#b6d464] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.2s' }} />
+                    <div className="absolute bottom-2 left-2 w-2 h-2 bg-[#ffe066] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.3s' }} />
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-muted-foreground mb-4 line-clamp-2">{project.shortDescription}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -237,6 +295,7 @@ export default function Projects() {
                   </div>
                 </CardContent>
               </Card>
+              </div>
             </div>
           ))}
         </div>

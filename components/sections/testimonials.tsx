@@ -88,8 +88,30 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-20 bg-muted">
-      <div className="container mx-auto px-4">
+    <section id="testimonials" ref={sectionRef} className="py-20 bg-muted relative overflow-hidden">
+      {/* Animated background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Soft gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-primary/18 via-transparent to-secondary/18 animate-gradient-flow" />
+        
+        {/* Gentle floating circles - larger and more visible */}
+        <div className="absolute top-20 right-16 w-96 h-96 bg-[#b6d464]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-1/3 left-20 w-80 h-80 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-32 right-1/4 w-88 h-88 bg-[#b6d464]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        <div className="absolute bottom-24 left-1/3 w-72 h-72 bg-[#ffe066]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '9s' }} />
+        
+        {/* Soft glow effects - more intense */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#b6d464]/25 via-[#ffe066]/25 to-[#b6d464]/25 rounded-full blur-3xl animate-glow-pulse" />
+        
+        {/* Additional orbs */}
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-[#b6d464]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#ffe066]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '5s' }} />
+        
+        {/* Subtle animated lines - more visible */}
+        <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#b6d464]/30 to-transparent animate-pulse" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"

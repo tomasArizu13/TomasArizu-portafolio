@@ -7,49 +7,77 @@ import { useTheme } from "next-themes"
 import { useLanguage } from "@/components/language-context"
 import { useLoading } from "@/components/loading-provider"
 
-// Flag components using SVG
+// Flag components using SVG - Real flags
 const SpanishFlag = () => (
-  <svg className="w-4 h-3 mr-2 inline-block" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
-    <rect width="640" height="480" fill="#c60b1e"/>
-    <rect width="640" height="240" y="240" fill="#ffc400"/>
+  <svg className="w-5 h-4 mr-2 inline-block" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+    <rect width="640" height="160" fill="#AA151B"/>
+    <rect width="640" height="160" y="160" fill="#F1BF00"/>
+    <rect width="640" height="160" y="320" fill="#AA151B"/>
   </svg>
 );
 
 const USFlag = () => (
-  <svg className="w-4 h-3 mr-2 inline-block" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
-    <rect width="640" height="480" fill="#bd3d44"/>
+  <svg className="w-5 h-4 mr-2 inline-block" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+    {/* Red stripes */}
+    <rect width="640" height="480" fill="#b22234"/>
     <rect width="640" height="37" y="37" fill="#fff"/>
     <rect width="640" height="37" y="111" fill="#fff"/>
     <rect width="640" height="37" y="185" fill="#fff"/>
     <rect width="640" height="37" y="259" fill="#fff"/>
     <rect width="640" height="37" y="333" fill="#fff"/>
     <rect width="640" height="37" y="407" fill="#fff"/>
-    <rect width="256" height="259" fill="#192f5d"/>
+    {/* Blue canton */}
+    <rect width="256" height="259" fill="#3c3b6e"/>
+    {/* White stars represented as small circles in a pattern */}
     <g fill="#fff">
-      <g id="s">
-        <g id="s1">
-          <g id="s1a">
-            <g id="s1a1">
-              <path id="s1a1a" d="M24.8 25l.9 2.8h2.9l-2.3 1.7.9 2.8-2.4-1.7-2.3 1.7.9-2.8-2.3-1.7h2.9z"/>
-              <use href="#s1a1a" y="5.6"/>
-              <use href="#s1a1a" y="11.2"/>
-              <use href="#s1a1a" y="16.8"/>
-              <use href="#s1a1a" y="22.4"/>
-            </g>
-            <use href="#s1a1" x="6.4"/>
-            <use href="#s1a1" x="12.8"/>
-            <use href="#s1a1" x="19.2"/>
-          </g>
-          <use href="#s1a" y="28"/>
-          <use href="#s1a" y="56"/>
-          <use href="#s1a" y="84"/>
-        </g>
-        <use href="#s1" x="25.6"/>
-        <use href="#s1" x="51.2"/>
-        <use href="#s1" x="76.8"/>
-      </g>
-      <use href="#s" x="102.4"/>
-      <use href="#s" x="204.8"/>
+      {/* Row 1 - 9 stars */}
+      <circle cx="20" cy="20" r="2.5"/>
+      <circle cx="40" cy="20" r="2.5"/>
+      <circle cx="60" cy="20" r="2.5"/>
+      <circle cx="80" cy="20" r="2.5"/>
+      <circle cx="100" cy="20" r="2.5"/>
+      <circle cx="120" cy="20" r="2.5"/>
+      <circle cx="140" cy="20" r="2.5"/>
+      <circle cx="160" cy="20" r="2.5"/>
+      <circle cx="180" cy="20" r="2.5"/>
+      {/* Row 2 - 8 stars */}
+      <circle cx="30" cy="40" r="2.5"/>
+      <circle cx="50" cy="40" r="2.5"/>
+      <circle cx="70" cy="40" r="2.5"/>
+      <circle cx="90" cy="40" r="2.5"/>
+      <circle cx="110" cy="40" r="2.5"/>
+      <circle cx="130" cy="40" r="2.5"/>
+      <circle cx="150" cy="40" r="2.5"/>
+      <circle cx="170" cy="40" r="2.5"/>
+      {/* Row 3 - 9 stars */}
+      <circle cx="20" cy="60" r="2.5"/>
+      <circle cx="40" cy="60" r="2.5"/>
+      <circle cx="60" cy="60" r="2.5"/>
+      <circle cx="80" cy="60" r="2.5"/>
+      <circle cx="100" cy="60" r="2.5"/>
+      <circle cx="120" cy="60" r="2.5"/>
+      <circle cx="140" cy="60" r="2.5"/>
+      <circle cx="160" cy="60" r="2.5"/>
+      <circle cx="180" cy="60" r="2.5"/>
+      {/* Row 4 - 8 stars */}
+      <circle cx="30" cy="80" r="2.5"/>
+      <circle cx="50" cy="80" r="2.5"/>
+      <circle cx="70" cy="80" r="2.5"/>
+      <circle cx="90" cy="80" r="2.5"/>
+      <circle cx="110" cy="80" r="2.5"/>
+      <circle cx="130" cy="80" r="2.5"/>
+      <circle cx="150" cy="80" r="2.5"/>
+      <circle cx="170" cy="80" r="2.5"/>
+      {/* Row 5 - 9 stars */}
+      <circle cx="20" cy="100" r="2.5"/>
+      <circle cx="40" cy="100" r="2.5"/>
+      <circle cx="60" cy="100" r="2.5"/>
+      <circle cx="80" cy="100" r="2.5"/>
+      <circle cx="100" cy="100" r="2.5"/>
+      <circle cx="120" cy="100" r="2.5"/>
+      <circle cx="140" cy="100" r="2.5"/>
+      <circle cx="160" cy="100" r="2.5"/>
+      <circle cx="180" cy="100" r="2.5"/>
     </g>
   </svg>
 );
@@ -131,16 +159,16 @@ export default function Navigation() {
                 {item.name}
               </button>
             ))}
-            {/* Nuevo selector de idioma estético */}
+            {/* Nuevo selector de idioma estético - Píldora redondeada */}
             <div className="relative" ref={langMenuRef}>
               <button
-                className="flex items-center gap-2 px-3 py-2 rounded-md border border-muted-foreground bg-background hover:bg-muted-foreground/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-muted-foreground/30 bg-background hover:bg-muted/50 hover:border-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50"
                 aria-haspopup="listbox"
                 aria-expanded={openLang}
                 onClick={() => setOpenLang((prev) => !prev)}
               >
-                <Globe className="w-5 h-5 text-primary" />
-                <span className="font-medium flex items-center">
+                <Globe className="w-4 h-4 text-primary" />
+                <span className="font-medium flex items-center text-sm">
                   {language === "en" ? (
                     <>
                       <USFlag />
@@ -153,12 +181,12 @@ export default function Navigation() {
                     </>
                   )}
                 </span>
-                <svg className={`w-4 h-4 transition-transform ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                <svg className={`w-4 h-4 transition-transform duration-200 ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
               {openLang && (
-                <div className="absolute right-0 mt-2 w-32 rounded-lg shadow-xl bg-white dark:bg-black border border-muted-foreground z-50 animate-fade-in">
+                <div className="absolute right-0 mt-2 w-40 rounded-2xl shadow-xl bg-background border-2 border-muted-foreground/30 z-50 animate-fade-in overflow-hidden">
                   <button
-                    className={`block w-full text-left px-4 py-2 text-sm rounded-t-lg hover:bg-primary/10 transition-colors text-black dark:text-white ${language === "en" ? "font-bold text-primary" : ""}`}
+                    className={`block w-full text-left px-4 py-3 text-sm hover:bg-primary/10 transition-colors text-foreground ${language === "en" ? "font-bold text-primary bg-primary/5" : ""}`}
                     onClick={() => {
                       setLanguage("en");
                       setOpenLang(false);
@@ -170,7 +198,7 @@ export default function Navigation() {
                     </span>
                   </button>
                   <button
-                    className={`block w-full text-left px-4 py-2 text-sm rounded-b-lg hover:bg-primary/10 transition-colors text-black dark:text-white ${language === "es" ? "font-bold text-primary" : ""}`}
+                    className={`block w-full text-left px-4 py-3 text-sm hover:bg-primary/10 transition-colors text-foreground ${language === "es" ? "font-bold text-primary bg-primary/5" : ""}`}
                     onClick={() => {
                       setLanguage("es");
                       setOpenLang(false);
@@ -215,16 +243,16 @@ export default function Navigation() {
                   {item.name}
                 </button>
               ))}
-              {/* Selector de idioma en mobile */}
+              {/* Selector de idioma en mobile - Píldora redondeada */}
               <div className="relative mt-2" ref={langMenuRef}>
                 <button
-                  className="flex items-center gap-2 px-3 py-2 rounded-md border border-muted-foreground bg-background hover:bg-muted-foreground/10 transition-colors w-full focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-muted-foreground/30 bg-background hover:bg-muted/50 hover:border-primary/50 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-primary/50"
                   aria-haspopup="listbox"
                   aria-expanded={openLang}
                   onClick={() => setOpenLang((prev) => !prev)}
                 >
-                  <Globe className="w-5 h-5 text-primary" />
-                  <span className="font-medium flex items-center">
+                  <Globe className="w-4 h-4 text-primary" />
+                  <span className="font-medium flex items-center text-sm">
                     {language === "en" ? (
                       <>
                         <USFlag />
@@ -237,12 +265,12 @@ export default function Navigation() {
                       </>
                     )}
                   </span>
-                  <svg className={`w-4 h-4 transition-transform ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${openLang ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 {openLang && (
-                  <div className="absolute right-0 mt-2 w-32 rounded-lg shadow-xl bg-white dark:bg-black border border-muted-foreground z-50 animate-fade-in">
+                  <div className="absolute right-0 mt-2 w-40 rounded-2xl shadow-xl bg-background border-2 border-muted-foreground/30 z-50 animate-fade-in overflow-hidden">
                     <button
-                      className={`block w-full text-left px-4 py-2 text-sm rounded-t-lg hover:bg-primary/10 transition-colors text-black dark:text-white ${language === "en" ? "font-bold text-primary" : ""}`}
+                      className={`block w-full text-left px-4 py-3 text-sm hover:bg-primary/10 transition-colors text-foreground ${language === "en" ? "font-bold text-primary bg-primary/5" : ""}`}
                       onClick={() => {
                         setLanguage("en");
                         setOpenLang(false);
@@ -254,7 +282,7 @@ export default function Navigation() {
                       </span>
                     </button>
                     <button
-                      className={`block w-full text-left px-4 py-2 text-sm rounded-b-lg hover:bg-primary/10 transition-colors text-black dark:text-white ${language === "es" ? "font-bold text-primary" : ""}`}
+                      className={`block w-full text-left px-4 py-3 text-sm hover:bg-primary/10 transition-colors text-foreground ${language === "es" ? "font-bold text-primary bg-primary/5" : ""}`}
                       onClick={() => {
                         setLanguage("es");
                         setOpenLang(false);

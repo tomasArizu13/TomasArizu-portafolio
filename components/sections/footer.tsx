@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-xl font-bold mb-2">Tomas Arizu</h3>
-            <p className="text-muted-foreground">Full Stack Developer & Designer</p>
+            <p className="text-muted-foreground">PRODUCT & TECH DEVELOPER</p>
           </div>
 
           {/* Social Links */}

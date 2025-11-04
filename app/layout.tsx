@@ -16,11 +16,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-background min-h-screen">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background min-h-screen transition-colors duration-300 ease-in-out">
         <LoadingProvider>
           <LanguageProvider>
-            <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+            <ThemeProvider 
+              attribute="class" 
+              defaultTheme="light" 
+              enableSystem={false}
+              disableTransitionOnChange={false}
+            >
               {children}
             </ThemeProvider>
           </LanguageProvider>
