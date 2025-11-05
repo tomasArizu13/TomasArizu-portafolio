@@ -156,29 +156,24 @@ export default function Projects() {
 
   return (
     <section id="projects" ref={sectionRef} className="py-20 bg-muted relative overflow-hidden">
-      {/* Animated background effects */}
+      {/* Animated background effects - subtle dots with theme background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient mesh background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 animate-gradient-flow" />
+        {/* Very subtle manchas/blobs */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/8 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-20 w-48 h-48 bg-[#ffe066]/8 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-32 left-1/4 w-44 h-44 bg-[#b6d464]/6 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-20 right-1/3 w-52 h-52 bg-[#ffe066]/6 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        <div className="absolute top-1/2 left-1/2 w-56 h-56 bg-[#b6d464]/5 rounded-full blur-3xl animate-glow-pulse" />
         
-        {/* Floating colorful orbs - much larger and more visible */}
-        <div className="absolute top-24 left-16 w-72 h-72 bg-[#b6d464]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-32 right-24 w-88 h-88 bg-[#ffe066]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2.5s' }} />
-        <div className="absolute bottom-28 left-1/3 w-64 h-64 bg-[#b6d464]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '5s' }} />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '7.5s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-[#b6d464]/30 to-[#ffe066]/30 rounded-full blur-3xl animate-glow-pulse" />
-        
-        {/* Animated particles - larger */}
-        <div className="absolute top-40 left-1/4 w-6 h-6 bg-[#b6d464] rounded-full opacity-80 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-60 right-1/3 w-5 h-5 bg-[#ffe066] rounded-full opacity-80 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-40 left-1/2 w-4 h-4 bg-[#b6d464] rounded-full opacity-80 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '5.5s' }} />
-        <div className="absolute bottom-60 right-1/5 w-7 h-7 bg-[#ffe066] rounded-full opacity-80 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '8s' }} />
-        <div className="absolute top-1/3 left-1/5 w-5 h-5 bg-[#b6d464] rounded-full opacity-75 shadow-lg shadow-[#b6d464]/50 animate-particle-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute bottom-1/3 right-1/5 w-6 h-6 bg-[#ffe066] rounded-full opacity-75 shadow-lg shadow-[#ffe066]/50 animate-particle-float" style={{ animationDelay: '6s' }} />
-        
-        {/* Radial gradient effects - more visible */}
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#b6d464]/15 rounded-full blur-3xl animate-wave" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#ffe066]/15 rounded-full blur-3xl animate-wave" style={{ animationDelay: '10s' }} />
+        {/* Small subtle dots scattered */}
+        <div className="absolute top-32 left-1/4 w-3 h-3 bg-[#b6d464] rounded-full opacity-25 animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-52 right-1/3 w-2.5 h-2.5 bg-[#ffe066] rounded-full opacity-25 animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-40 left-1/2 w-2 h-2 bg-[#b6d464] rounded-full opacity-20 animate-particle-float" style={{ animationDelay: '5.5s' }} />
+        <div className="absolute bottom-60 right-1/5 w-3.5 h-3.5 bg-[#ffe066] rounded-full opacity-20 animate-particle-float" style={{ animationDelay: '8s' }} />
+        <div className="absolute top-1/3 left-1/5 w-2.5 h-2.5 bg-[#b6d464] rounded-full opacity-18 animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-1/3 right-1/5 w-3 h-3 bg-[#ffe066] rounded-full opacity-18 animate-particle-float" style={{ animationDelay: '6s' }} />
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-[#b6d464] rounded-full opacity-15 animate-particle-float" style={{ animationDelay: '2.5s' }} />
+        <div className="absolute bottom-1/4 right-1/3 w-2.5 h-2.5 bg-[#ffe066] rounded-full opacity-15 animate-particle-float" style={{ animationDelay: '7s' }} />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -228,7 +223,53 @@ export default function Projects() {
                 <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#ffe066] rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.2s' }} />
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#b6d464] rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.3s' }} />
                 
-                <Card className="relative border-[3px] border-transparent group-hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 rounded-2xl overflow-hidden bg-card">
+                <Card className="relative border-[3px] border-transparent group-hover:border-primary/40 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 rounded-2xl overflow-hidden bg-white dark:bg-black">
+                  {/* Dots pattern - animal print style with green dots */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: 'radial-gradient(circle, #b6d464 1.5px, transparent 1.5px)',
+                        backgroundSize: '24px 24px',
+                        backgroundPosition: '0 0',
+                        animation: 'wave 18s ease-in-out infinite',
+                        opacity: 0.2
+                      }}
+                    />
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: 'radial-gradient(circle, #b6d464 1px, transparent 1px)',
+                        backgroundSize: '32px 32px',
+                        backgroundPosition: '12px 12px',
+                        animation: 'wave 25s ease-in-out infinite reverse',
+                        opacity: 0.15
+                      }}
+                    />
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: 'radial-gradient(circle, #b6d464 1.2px, transparent 1.2px)',
+                        backgroundSize: '28px 28px',
+                        backgroundPosition: '6px 6px',
+                        animation: 'wave 22s ease-in-out infinite',
+                        opacity: 0.12
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Animated floating green dots */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-[#b6d464] rounded-full opacity-40 animate-particle-float" style={{ animationDelay: '0s' }} />
+                  <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-[#b6d464] rounded-full opacity-35 animate-particle-float" style={{ animationDelay: '2s' }} />
+                  <div className="absolute top-1/2 left-4 w-1.5 h-1.5 bg-[#b6d464] rounded-full opacity-30 animate-particle-float" style={{ animationDelay: '4s' }} />
+                  <div className="absolute bottom-1/2 right-4 w-2 h-2 bg-[#b6d464] rounded-full opacity-35 animate-particle-float" style={{ animationDelay: '6s' }} />
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#b6d464] rounded-full opacity-25 animate-particle-float" style={{ animationDelay: '1s' }} />
+                  <div className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-[#b6d464] rounded-full opacity-30 animate-particle-float" style={{ animationDelay: '3s' }} />
+                  
+                  {/* Subtle glow green dots */}
+                  <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-[#b6d464]/30 rounded-full blur-sm animate-pulse" style={{ animationDelay: '1s' }} />
+                  <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-[#b6d464]/30 rounded-full blur-sm animate-pulse" style={{ animationDelay: '3s' }} />
+                  <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-[#b6d464]/20 rounded-full blur-md animate-glow-pulse" />
                   <div className="relative overflow-hidden">
                     <Image
                       src={project.image || "/placeholder.svg"}
@@ -251,7 +292,7 @@ export default function Projects() {
                       </Button>
                     </div>
                   </div>
-                  <CardContent className="p-6 relative">
+                  <CardContent className="p-6 relative z-10">
                     {/* Corner accent dots */}
                     <div className="absolute top-2 right-2 w-2 h-2 bg-[#b6d464] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-2 left-2 w-2 h-2 bg-[#ffe066] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ transitionDelay: '0.1s' }} />

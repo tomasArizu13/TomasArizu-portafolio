@@ -101,14 +101,6 @@ export default function Experience() {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Timeline line - animated */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#b6d464]/30 via-[#ffe066]/30 to-[#b6d464]/30 hidden md:block" />
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-primary/20 to-transparent hidden md:block animate-pulse" />
-            
-            {/* Animated dots along timeline */}
-            <div className="absolute left-[31px] top-1/4 w-2 h-2 bg-[#b6d464] rounded-full hidden md:block animate-pulse" style={{ animationDelay: '0s' }} />
-            <div className="absolute left-[31px] top-1/2 w-2 h-2 bg-[#ffe066] rounded-full hidden md:block animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute left-[31px] top-3/4 w-2 h-2 bg-[#b6d464] rounded-full hidden md:block animate-pulse" style={{ animationDelay: '2s' }} />
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
@@ -122,10 +114,6 @@ export default function Experience() {
                   }`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
-                  {/* Timeline dot - animated */}
-                  <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background hidden md:block z-10 group-hover:scale-125 transition-transform duration-300" />
-                  <div className="absolute left-6 w-8 h-8 bg-primary/20 rounded-full border-2 border-primary/30 hidden md:block animate-pulse" />
-                  <div className="absolute left-6 w-12 h-12 bg-primary/10 rounded-full hidden md:block animate-glow-pulse" />
 
                   <div className="md:ml-20 group">
                     {/* Animated gradient border */}
