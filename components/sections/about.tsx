@@ -9,7 +9,7 @@ import Image from "next/image"
 import { useTranslation } from "@/components/language-context";
 
 // Hook para efecto 3D parallax con mouse
-const useParallax3D = (ref: React.RefObject<HTMLElement>) => {
+const useParallax3D = (ref: React.RefObject<HTMLDivElement | null>) => {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
@@ -67,9 +67,9 @@ const skills = [
 ]
 
 const stats = [
-  { icon: Award, label: "Years Experience", value: "4+" },
+  { icon: Award, label: "Years Experience", value: "1+" },
   { icon: Users, label: "MVPs Developed", value: "5+" },
-  { icon: Coffee, label: "Projects Completed", value: "30+" },
+  { icon: Coffee, label: "Projects Completed", value: "20+" },
 ]
 
 export default function About() {
@@ -222,14 +222,14 @@ export default function About() {
               {/* Floating Stats Cards */}
               <div className="absolute -bottom-6 -right-6 bg-white dark:bg-black rounded-xl p-4 shadow-lg border">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">4+</div>
+                  <div className="text-2xl font-bold text-primary">1+</div>
                   <div className="text-sm text-muted-foreground">Years Exp.</div>
                 </div>
               </div>
 
               <div className="absolute -top-6 -left-6 bg-white dark:bg-black rounded-xl p-4 shadow-lg border">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">30+</div>
+                  <div className="text-2xl font-bold text-primary">20+</div>
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </div>
               </div>

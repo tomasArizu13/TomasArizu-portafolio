@@ -16,9 +16,9 @@ const en = {
     title: "About Me",
     subtitle: "Passionate about creating digital solutions that make a difference",
     hi: "Hi, I'm Tomas Arizu",
-    content1: "A passionate Full Stack Developer and Designer with over 4 years of experience creating exceptional digital experiences. I specialize in modern web technologies and love turning complex problems into simple, beautiful solutions.",
-    content2: "My journey in web development started with a curiosity about how websites work, and it has evolved into a deep passion for creating applications that not only look great but also provide seamless user experiences. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends and best practices.",
-    content3: "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, mentoring aspiring developers, or enjoying a good cup of coffee while brainstorming the next big idea.",
+    content1: "I'm a junior full-stack-leaning developer and designer with about 1 year of hands-on practice building small web projects and prototypes. I focus on modern web tech and enjoy turning messy problems into simple, usable solutions.",
+    content2: "I got into web development out of curiosity about how websites work, and I'm still learning every week. I care about writing clear, maintainable code, documenting my work, and shipping small improvements fast. I'm looking for opportunities where I can keep learning, contribute to real products, and grow with feedback from experienced teams.",
+    content3: "When I'm not coding, I explore new tools, read docs, and tinker with ideas that help me understand the craft a bit better.",
     keypoints: [
       "Full Stack Development",
       "UI/UX Design",
