@@ -7,6 +7,7 @@ import Testimonials from "@/components/sections/testimonials"
 import Contact from "@/components/sections/contact"
 import Footer from "@/components/sections/footer"
 import Navigation from "@/components/navigation"
+import MusicPlayer from "@/components/music-player"
 
 export const metadata: Metadata = {
   title: "Tomas Arizu - Product & Tech Builder",
@@ -46,6 +47,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <MusicPlayer />
       <main>
         <Hero />
         <hr className="border-t border-muted-foreground my-0 opacity-40" />

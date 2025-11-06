@@ -68,6 +68,12 @@ const es = {
     copyright: "Todos los derechos reservados.",
     designed: "Diseñado por",
     portfolio: "tuportafolio.com"
+  },
+  music: {
+    title: "🎵 Música de Fondo",
+    description: "¿Te gustaría reproducir música de fondo mientras navegas?",
+    play: "Reproducir Música",
+    dismiss: "No, Gracias"
   }
 }
 

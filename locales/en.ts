@@ -68,6 +68,12 @@ const en = {
     copyright: "All rights reserved.",
     designed: "Designed by",
     portfolio: "tuportafolio.com"
+  },
+  music: {
+    title: "🎵 Background Music",
+    description: "Would you like to play background music while browsing?",
+    play: "Play Music",
+    dismiss: "No Thanks"
   }
 }
 
