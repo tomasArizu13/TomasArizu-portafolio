@@ -17,14 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-background min-h-screen transition-colors duration-300 ease-in-out">
+      <body className="bg-background min-h-screen">
         <LoadingProvider>
           <LanguageProvider>
             <ThemeProvider 
               attribute="class" 
               defaultTheme="light" 
               enableSystem={false}
-              disableTransitionOnChange={false}
+              disableTransitionOnChange={true}
             >
               {children}
             </ThemeProvider>

@@ -3,62 +3,73 @@
 @tailwind utilities;
 
 @layer base {
-  /* Smooth theme transitions */
-  * {
+  /* Optimized theme transitions - exclude gradient elements */
+  html {
     @apply transition-colors duration-200 ease-in-out;
   }
   
-  html {
-    @apply transition-colors duration-300 ease-in-out;
-  }
-  
   body {
-    @apply transition-colors duration-300 ease-in-out;
+    @apply transition-colors duration-200 ease-in-out;
   }
   
-  /* Smooth transitions for theme changes - all color properties */
-  [class*="bg-"],
-  [class*="text-"],
-  [class*="border-"],
-  [class*="fill-"],
-  [class*="stroke-"] {
-    @apply transition-colors duration-300 ease-in-out;
-  }
-  
-  /* Specific components that need smooth transitions */
+  /* Specific components that need smooth transitions - exclude gradient text */
   .bg-background,
   .bg-muted,
   .bg-card,
   .bg-popover,
   .bg-primary,
   .bg-secondary,
-  .bg-accent,
-  .text-foreground,
+  .bg-accent {
+    @apply transition-colors duration-200 ease-in-out;
+  }
+  
+  .text-foreground:not([style*="background"]):not([style*="gradient"]),
   .text-muted-foreground,
-  .text-primary,
-  .text-secondary,
+  .text-primary:not([style*="background"]):not([style*="gradient"]),
+  .text-secondary {
+    @apply transition-colors duration-200 ease-in-out;
+  }
+  
   .border,
   .border-border,
   .border-primary,
   .border-secondary {
-    @apply transition-colors duration-300 ease-in-out;
+    @apply transition-colors duration-200 ease-in-out;
   }
   
   /* Image transitions - prevent flash */
   img,
   picture,
   video {
-    @apply transition-opacity duration-200 ease-in-out;
+    @apply transition-opacity duration-150 ease-in-out;
   }
   
   /* Next.js Image component */
   .next-image-wrapper img {
-    @apply transition-opacity duration-200 ease-in-out;
+    @apply transition-opacity duration-150 ease-in-out;
   }
   
   /* Prevent layout shift during theme change */
   svg {
-    @apply transition-colors duration-300 ease-in-out;
+    @apply transition-colors duration-200 ease-in-out;
+  }
+  
+  /* Optimize rendering for theme changes */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent flickering on theme change - hero text */
+  .hero-text,
+  .hero-text * {
+    transition: none !important;
+    will-change: auto;
+  }
+  
+  /* Smooth theme change without flicker */
+  html.theme-transitioning * {
+    transition: none !important;
   }
 }
 

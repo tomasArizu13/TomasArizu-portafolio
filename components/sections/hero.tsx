@@ -91,12 +91,16 @@ export default function Hero() {
           <div className="order-2 lg:order-1 flex-1 text-center lg:text-left max-w-2xl">
             {/* Animated headline */}
             <div
-              className={`transition-all duration-1000 delay-300 ${
+              className={`hero-text transition-all duration-1000 delay-300 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-foreground dark:text-white leading-tight" style={{overflow: 'visible'}}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight hero-text" style={{
+                overflow: 'visible',
+                color: 'hsl(var(--foreground))',
+              }}>
                 <span
+                  className="hero-text"
                   style={{
                     background: 'linear-gradient(90deg, #b6d464 0%, #ffe066 100%)',
                     WebkitBackgroundClip: 'text',
@@ -112,7 +116,11 @@ export default function Hero() {
                   PRODUCT
                 </span>
                 <br />
-                & TECH BUILDER
+                <span className="hero-text" style={{ 
+                  color: 'hsl(var(--foreground))',
+                }}>
+                  & TECH BUILDER
+                </span>
               </h1>
             </div>
 
@@ -121,7 +129,10 @@ export default function Hero() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-xl">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-xl" style={{
+                willChange: 'auto',
+                transition: 'color 0.2s ease-in-out'
+              }}>
                 {t.hero.description}
               </p>
             </div>
