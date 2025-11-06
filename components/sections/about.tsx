@@ -117,19 +117,19 @@ export default function About() {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15 animate-gradient-flow" />
         
-        {/* Floating particles - more visible */}
-        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/40 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-40 right-20 w-60 h-60 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-32 left-1/4 w-48 h-48 bg-[#b6d464]/35 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-[#ffe066]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        {/* Floating particles - less green */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/20 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-20 w-60 h-60 bg-[#ffe066]/20 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-32 left-1/4 w-48 h-48 bg-[#b6d464]/18 rounded-full blur-2xl animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-[#ffe066]/18 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
         
-        {/* Glowing orbs - more intense */}
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-[#b6d464]/25 to-[#ffe066]/25 rounded-full blur-3xl animate-glow-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[#ffe066]/25 to-[#b6d464]/25 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '2s' }} />
+        {/* Glowing orbs - less intense */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-[#b6d464]/12 to-[#ffe066]/12 rounded-full blur-3xl animate-glow-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[#ffe066]/12 to-[#b6d464]/12 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '2s' }} />
         
         {/* Additional large orbs */}
-        <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#b6d464]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/2 right-0 w-80 h-80 bg-[#ffe066]/30 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#b6d464]/15 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/2 right-0 w-80 h-80 bg-[#ffe066]/15 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
         
         {/* Animated grid pattern - more visible */}
         <div className="absolute inset-0 opacity-[0.08]"

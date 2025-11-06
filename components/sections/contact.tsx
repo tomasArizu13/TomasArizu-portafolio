@@ -21,26 +21,26 @@ export default function Contact() {
         {/* Dynamic gradient background */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/18 via-secondary/18 to-primary/18 animate-gradient-flow" />
         
-        {/* Interactive floating elements - much larger */}
-        <div className="absolute top-16 left-12 w-64 h-64 bg-[#b6d464]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-24 right-16 w-80 h-80 bg-[#ffe066]/45 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-28 left-1/4 w-72 h-72 bg-[#b6d464]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute bottom-20 right-1/3 w-88 h-88 bg-[#ffe066]/40 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#b6d464]/30 to-[#ffe066]/30 rounded-full blur-3xl animate-glow-pulse" />
+        {/* Interactive floating elements - less green */}
+        <div className="absolute top-16 left-12 w-64 h-64 bg-[#b6d464]/22 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-24 right-16 w-80 h-80 bg-[#ffe066]/22 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-28 left-1/4 w-72 h-72 bg-[#b6d464]/20 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-20 right-1/3 w-88 h-88 bg-[#ffe066]/20 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#b6d464]/15 to-[#ffe066]/15 rounded-full blur-3xl animate-glow-pulse" />
         
         {/* Additional large orbs */}
-        <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#b6d464]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-0 right-1/3 w-88 h-88 bg-[#ffe066]/35 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#b6d464]/18 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-0 right-1/3 w-88 h-88 bg-[#ffe066]/18 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
         
-        {/* Animated connection lines - thicker and more visible */}
-        <div className="absolute top-1/4 left-0 w-1/3 h-1 bg-gradient-to-r from-transparent via-[#b6d464]/40 to-transparent animate-pulse" />
-        <div className="absolute bottom-1/4 right-0 w-1/3 h-1 bg-gradient-to-l from-transparent via-[#ffe066]/40 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
+        {/* Animated connection lines - less visible */}
+        <div className="absolute top-1/4 left-0 w-1/3 h-1 bg-gradient-to-r from-transparent via-[#b6d464]/20 to-transparent animate-pulse" />
+        <div className="absolute bottom-1/4 right-0 w-1/3 h-1 bg-gradient-to-l from-transparent via-[#ffe066]/20 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
         
-        {/* Small particles - larger and more visible */}
-        <div className="absolute top-32 left-1/3 w-5 h-5 bg-[#b6d464] rounded-full opacity-85 shadow-lg shadow-[#b6d464]/60 animate-particle-float" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute bottom-40 right-1/4 w-6 h-6 bg-[#ffe066] rounded-full opacity-85 shadow-lg shadow-[#ffe066]/60 animate-particle-float" style={{ animationDelay: '3.5s' }} />
-        <div className="absolute top-1/2 left-1/5 w-6 h-6 bg-[#b6d464] rounded-full opacity-80 shadow-lg shadow-[#b6d464]/60 animate-particle-float" style={{ animationDelay: '5.5s' }} />
-        <div className="absolute top-1/4 right-1/5 w-5 h-5 bg-[#ffe066] rounded-full opacity-80 shadow-lg shadow-[#ffe066]/60 animate-particle-float" style={{ animationDelay: '7.5s' }} />
+        {/* Small particles - less visible */}
+        <div className="absolute top-32 left-1/3 w-5 h-5 bg-[#b6d464] rounded-full opacity-42 shadow-lg shadow-[#b6d464]/30 animate-particle-float" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute bottom-40 right-1/4 w-6 h-6 bg-[#ffe066] rounded-full opacity-42 shadow-lg shadow-[#ffe066]/30 animate-particle-float" style={{ animationDelay: '3.5s' }} />
+        <div className="absolute top-1/2 left-1/5 w-6 h-6 bg-[#b6d464] rounded-full opacity-40 shadow-lg shadow-[#b6d464]/30 animate-particle-float" style={{ animationDelay: '5.5s' }} />
+        <div className="absolute top-1/4 right-1/5 w-5 h-5 bg-[#ffe066] rounded-full opacity-40 shadow-lg shadow-[#ffe066]/30 animate-particle-float" style={{ animationDelay: '7.5s' }} />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">

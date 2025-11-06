@@ -17,16 +17,19 @@ export default function MusicPlayer() {
   useEffect(() => {
     // Check if user has a saved preference
     const savedPreference = localStorage.getItem('music-preference')
-    if (savedPreference === 'dismissed' || savedPreference === 'playing') {
-      // User already made a choice, don't show popup
-      if (savedPreference === 'playing') {
-        setUserPreference(true)
-        setHasInteracted(true)
-      }
+    if (savedPreference === 'dismissed') {
+      // User dismissed, don't show popup but keep small button available
       return
     }
     
-    // Show popup after a short delay
+    if (savedPreference === 'playing') {
+      // User already playing, don't show popup
+      setUserPreference(true)
+      setHasInteracted(true)
+      return
+    }
+    
+    // Show popup after a short delay (first time visit)
     const timer = setTimeout(() => {
       setShowPopup(true)
     }, 1500)
@@ -97,12 +100,14 @@ export default function MusicPlayer() {
 
   const handleDismiss = () => {
     setShowPopup(false)
-    // Don't save as dismissed, so user can still access music via the small play button
+    // Save preference so popup doesn't show again, but keep small button available
+    localStorage.setItem('music-preference', 'dismissed')
   }
   
   const handleCloseWithX = () => {
     setShowPopup(false)
-    // Keep the small play button available
+    // Save preference so popup doesn't show again, but keep small button available
+    localStorage.setItem('music-preference', 'dismissed')
   }
 
   const handleToggleMute = () => {
@@ -136,9 +141,16 @@ export default function MusicPlayer() {
         Your browser does not support the audio element.
       </audio>
 
-      {/* Music Player Popup - Bottom Left (smaller) */}
+      {/* Music Player Popup - Bottom Left (smaller) - Floating over all sections */}
       {showPopup && (
-        <div className="fixed bottom-6 left-6 z-50 animate-fade-in">
+        <div 
+          className="fixed bottom-6 left-6 z-[99999] animate-fade-in pointer-events-auto" 
+          style={{ 
+            position: 'fixed',
+            pointerEvents: 'auto',
+            isolation: 'isolate'
+          }}
+        >
           <div className="bg-background/95 backdrop-blur-md border-2 border-primary/30 rounded-2xl shadow-2xl p-4 max-w-xs relative">
             {/* Close button */}
             <button
@@ -188,9 +200,16 @@ export default function MusicPlayer() {
         </div>
       )}
       
-      {/* Small Play Button (shown when popup is closed and music is not playing) */}
+      {/* Small Play Button (shown when popup is closed and music is not playing) - Floating over all sections */}
       {!showPopup && !isPlaying && (
-        <div className="fixed bottom-6 left-6 z-50 animate-fade-in">
+        <div 
+          className="fixed bottom-6 left-6 z-[99999] animate-fade-in pointer-events-auto" 
+          style={{ 
+            position: 'fixed',
+            pointerEvents: 'auto',
+            isolation: 'isolate'
+          }}
+        >
           <Button
             size="icon"
             onClick={() => setShowPopup(true)}
@@ -207,9 +226,16 @@ export default function MusicPlayer() {
         </div>
       )}
 
-      {/* Floating Music Control (shown when music is playing) */}
+      {/* Floating Music Control (shown when music is playing) - Floating over all sections */}
       {hasInteracted && userPreference && !showPopup && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-background/90 backdrop-blur-md border-2 border-primary/30 rounded-full px-4 py-3 shadow-lg">
+        <div 
+          className="fixed bottom-6 right-6 z-[99999] flex items-center gap-2 bg-background/90 backdrop-blur-md border-2 border-primary/30 rounded-full px-4 py-3 shadow-lg pointer-events-auto" 
+          style={{ 
+            position: 'fixed',
+            pointerEvents: 'auto',
+            isolation: 'isolate'
+          }}
+        >
           <Button
             variant="ghost"
             size="icon"

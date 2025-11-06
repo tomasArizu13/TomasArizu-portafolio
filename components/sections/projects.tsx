@@ -158,20 +158,20 @@ export default function Projects() {
     <section id="projects" ref={sectionRef} className="py-20 bg-muted relative overflow-hidden">
       {/* Animated background effects - subtle dots with theme background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Very subtle manchas/blobs */}
-        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/8 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-40 right-20 w-48 h-48 bg-[#ffe066]/8 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-32 left-1/4 w-44 h-44 bg-[#b6d464]/6 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute bottom-20 right-1/3 w-52 h-52 bg-[#ffe066]/6 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
-        <div className="absolute top-1/2 left-1/2 w-56 h-56 bg-[#b6d464]/5 rounded-full blur-3xl animate-glow-pulse" />
+        {/* Very subtle manchas/blobs - less green */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-[#b6d464]/4 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '0s' }} />
+        <div className="absolute top-40 right-20 w-48 h-48 bg-[#ffe066]/4 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-32 left-1/4 w-44 h-44 bg-[#b6d464]/3 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-20 right-1/3 w-52 h-52 bg-[#ffe066]/3 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '6s' }} />
+        <div className="absolute top-1/2 left-1/2 w-56 h-56 bg-[#b6d464]/2.5 rounded-full blur-3xl animate-glow-pulse" />
         
-        {/* Small subtle dots scattered */}
-        <div className="absolute top-32 left-1/4 w-3 h-3 bg-[#b6d464] rounded-full opacity-25 animate-particle-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-52 right-1/3 w-2.5 h-2.5 bg-[#ffe066] rounded-full opacity-25 animate-particle-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-40 left-1/2 w-2 h-2 bg-[#b6d464] rounded-full opacity-20 animate-particle-float" style={{ animationDelay: '5.5s' }} />
-        <div className="absolute bottom-60 right-1/5 w-3.5 h-3.5 bg-[#ffe066] rounded-full opacity-20 animate-particle-float" style={{ animationDelay: '8s' }} />
-        <div className="absolute top-1/3 left-1/5 w-2.5 h-2.5 bg-[#b6d464] rounded-full opacity-18 animate-particle-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute bottom-1/3 right-1/5 w-3 h-3 bg-[#ffe066] rounded-full opacity-18 animate-particle-float" style={{ animationDelay: '6s' }} />
+        {/* Small subtle dots scattered - less green */}
+        <div className="absolute top-32 left-1/4 w-3 h-3 bg-[#b6d464] rounded-full opacity-12 animate-particle-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-52 right-1/3 w-2.5 h-2.5 bg-[#ffe066] rounded-full opacity-12 animate-particle-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-40 left-1/2 w-2 h-2 bg-[#b6d464] rounded-full opacity-10 animate-particle-float" style={{ animationDelay: '5.5s' }} />
+        <div className="absolute bottom-60 right-1/5 w-3.5 h-3.5 bg-[#ffe066] rounded-full opacity-10 animate-particle-float" style={{ animationDelay: '8s' }} />
+        <div className="absolute top-1/3 left-1/5 w-2.5 h-2.5 bg-[#b6d464] rounded-full opacity-9 animate-particle-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute bottom-1/3 right-1/5 w-3 h-3 bg-[#ffe066] rounded-full opacity-9 animate-particle-float" style={{ animationDelay: '6s' }} />
         <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-[#b6d464] rounded-full opacity-15 animate-particle-float" style={{ animationDelay: '2.5s' }} />
         <div className="absolute bottom-1/4 right-1/3 w-2.5 h-2.5 bg-[#ffe066] rounded-full opacity-15 animate-particle-float" style={{ animationDelay: '7s' }} />
       </div>
