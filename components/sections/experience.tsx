@@ -143,7 +143,7 @@ export default function Experience() {
                     <div className="absolute top-2 right-2 w-2 h-2 bg-[#b6d464] rounded-full opacity-0 group-hover:opacity-100 animate-pulse" style={{ animationDelay: '0s' }} />
                     <div className="absolute bottom-2 left-2 w-2 h-2 bg-[#ffe066] rounded-full opacity-0 group-hover:opacity-100 animate-pulse" style={{ animationDelay: '0.5s' }} />
                     
-                    <Card className="relative border-2 border-transparent group-hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:scale-[1.02] rounded-2xl overflow-hidden bg-card">
+                    <Card className="relative border-2 border-primary/25 group-hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/15 hover:-translate-y-1 hover:scale-[1.02] rounded-2xl overflow-hidden bg-card">
                       <CardContent className="p-6 relative">
                         {/* Shine effect */}
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">

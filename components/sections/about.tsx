@@ -131,14 +131,21 @@ export default function About() {
         <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#b6d464]/15 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '1s' }} />
         <div className="absolute bottom-1/2 right-0 w-80 h-80 bg-[#ffe066]/15 rounded-full blur-3xl animate-particle-float" style={{ animationDelay: '3s' }} />
         
-        {/* Animated grid pattern - more visible */}
-        <div className="absolute inset-0 opacity-[0.08]"
+        {/* Dotted pattern similar to hero */}
+        <div
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'linear-gradient(#b6d464 1px, transparent 1px), linear-gradient(90deg, #b6d464 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-            animation: 'wave 25s ease-in-out infinite'
+            backgroundImage: 'radial-gradient(circle, #b6d464 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            animation: 'wave 18s ease-in-out infinite',
           }}
         />
+
+        {/* Additional floating dots */}
+        <div className="absolute top-1/4 left-16 w-2 h-2 bg-[#b6d464] rounded-full animate-particle-float" style={{ opacity: 0.45, animationDelay: '1s' }} />
+        <div className="absolute top-1/3 right-24 w-2.5 h-2.5 bg-[#ffe066] rounded-full animate-particle-float" style={{ opacity: 0.45, animationDelay: '2s' }} />
+        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-[#b6d464] rounded-full animate-particle-float" style={{ opacity: 0.35, animationDelay: '3s' }} />
+        <div className="absolute bottom-24 right-1/4 w-2.5 h-2.5 bg-[#ffe066] rounded-full animate-particle-float" style={{ opacity: 0.35, animationDelay: '4s' }} />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
