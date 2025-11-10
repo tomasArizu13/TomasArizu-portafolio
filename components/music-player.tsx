@@ -228,49 +228,51 @@ export default function MusicPlayer() {
 
       {/* Floating Music Control (shown when music is playing) - Floating over all sections */}
       {hasInteracted && userPreference && !showPopup && (
-        <div 
-          className="fixed bottom-6 right-6 z-[99999] flex items-center gap-2 bg-background/90 backdrop-blur-md border-2 border-primary/30 rounded-full px-4 py-3 shadow-lg pointer-events-auto" 
-          style={{ 
+        <div
+          className="fixed bottom-4 right-4 z-[99999] pointer-events-auto"
+          style={{
             position: 'fixed',
             pointerEvents: 'auto',
-            isolation: 'isolate'
+            isolation: 'isolate',
           }}
         >
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handlePlay}
-            className="rounded-full hover:bg-primary/10"
-          >
-            {isPlaying ? (
-              <Pause className="w-4 h-4 text-primary" />
-            ) : (
-              <Play className="w-4 h-4 text-primary" />
-            )}
-          </Button>
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleToggleMute}
-            className="rounded-full hover:bg-primary/10"
-          >
-            {isMuted ? (
-              <VolumeX className="w-4 h-4 text-muted-foreground" />
-            ) : (
-              <Volume2 className="w-4 h-4 text-primary" />
-            )}
-          </Button>
-          
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value={audioRef.current?.volume || 0.3}
-            onChange={handleVolumeChange}
-            className="w-20 h-1 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-          />
+          <div className="flex items-center gap-1 bg-background/85 backdrop-blur-md border border-primary/20 rounded-full px-2.5 py-1.5 shadow-lg">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handlePlay}
+              className="h-8 w-8 rounded-full hover:bg-primary/10"
+            >
+              {isPlaying ? (
+                <Pause className="w-3.5 h-3.5 text-primary" />
+              ) : (
+                <Play className="w-3.5 h-3.5 text-primary" />
+              )}
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleToggleMute}
+              className="h-8 w-8 rounded-full hover:bg-primary/10"
+            >
+              {isMuted ? (
+                <VolumeX className="w-3.5 h-3.5 text-muted-foreground" />
+              ) : (
+                <Volume2 className="w-3.5 h-3.5 text-primary" />
+              )}
+            </Button>
+
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value={audioRef.current?.volume || 0.3}
+              onChange={handleVolumeChange}
+              className="hidden sm:block w-16 h-1 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+            />
+          </div>
         </div>
       )}
     </>
