@@ -6,6 +6,7 @@ import { Moon, Sun, Menu, X, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useLanguage } from "@/components/language-context"
 import { useLoading } from "@/components/loading-provider"
+import { useLenis } from "@/components/smooth-scroll-provider"
 
 // Flag components using SVG - Real flags
 const SpanishFlag = () => (
@@ -99,6 +100,7 @@ export default function Navigation() {
   const [openLang, setOpenLang] = useState(false);
   const langMenuRef = useRef<HTMLDivElement>(null);
   const { isLoading } = useLoading();
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,9 +125,13 @@ export default function Navigation() {
   }, [openLang]);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href) as HTMLElement | null
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      if (lenis) {
+        lenis.scrollTo(element, { offset: -80 })
+      } else {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
       setIsMobileMenuOpen(false)
     }
   }
@@ -140,7 +146,7 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <button
-            className="font-bold text-xl hover:text-primary transition-colors"
+            className="font-display font-bold text-xl hover:text-primary transition-colors"
             onClick={() => scrollToSection('#hero')}
             aria-label="Go to Hero section"
             style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
@@ -154,7 +160,7 @@ export default function Navigation() {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="font-mono text-xs uppercase tracking-wide hover:text-primary transition-colors"
               >
                 {item.name}
               </button>
@@ -168,7 +174,7 @@ export default function Navigation() {
                 onClick={() => setOpenLang((prev) => !prev)}
               >
                 <Globe className="w-4 h-4 text-primary" />
-                <span className="font-medium flex items-center text-sm">
+                <span className="font-mono text-xs uppercase tracking-wide flex items-center">
                   {language === "en" ? (
                     <>
                       <USFlag />
@@ -258,7 +264,7 @@ export default function Navigation() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 text-base font-medium hover:text-primary transition-colors w-full text-center"
+                  className="block px-3 py-2 font-mono text-xs uppercase tracking-wide hover:text-primary transition-colors w-full text-center"
                 >
                   {item.name}
                 </button>
@@ -272,7 +278,7 @@ export default function Navigation() {
                   onClick={() => setOpenLang((prev) => !prev)}
                 >
                   <Globe className="w-4 h-4 text-primary" />
-                  <span className="font-medium flex items-center text-sm">
+                  <span className="font-mono text-xs uppercase tracking-wide flex items-center">
                     {language === "en" ? (
                       <>
                         <USFlag />

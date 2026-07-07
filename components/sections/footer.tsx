@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-xl font-bold mb-2">Tomas Arizu</h3>
-            <p className="text-muted-foreground">PRODUCT & TECH DEVELOPER</p>
+            <p className="font-mono text-xs uppercase tracking-wide text-faint">Product-Minded Builder</p>
           </div>
 
           {/* Social Links */}
@@ -34,19 +34,8 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="text-center md:text-right">
-            <p className="text-sm text-muted-foreground mb-1">© {currentYear} Tomas Arizu. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground">
-              Designed by{" "}
-              <a
-                href="https://tuportafolio.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
-                tuportafolio.com
-              </a>
-            </p>
+          <div className="text-center md:text-right font-mono text-xs uppercase tracking-wide text-faint">
+            <p className="mb-1">© {currentYear} Tomas Arizu</p>
           </div>
         </div>
       </div>

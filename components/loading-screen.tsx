@@ -8,7 +8,11 @@ export default function LoadingScreen() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Simular progreso de carga
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsLoading(false)
+      return
+    }
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -28,19 +32,19 @@ export default function LoadingScreen() {
   if (!isLoading) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
       <div className="relative">
         {/* Logo TA */}
         <div className="relative w-24 h-24 flex items-center justify-center">
-          {/* Círculo gris claro */}
-          <div className="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-gray-600"></div>
-          
-          {/* Arco superior con gradiente verde */}
+          {/* Círculo base */}
+          <div className="absolute inset-0 rounded-full border-2 border-border"></div>
+
+          {/* Arco de progreso */}
           <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
             <defs>
               <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#b6d464" />
-                <stop offset="100%" stopColor="#ffe066" />
+                <stop offset="0%" stopColor="var(--verified)" />
+                <stop offset="100%" stopColor="var(--verified-bright)" />
               </linearGradient>
             </defs>
             <circle
@@ -55,10 +59,10 @@ export default function LoadingScreen() {
               className="transition-all duration-300 ease-out"
             />
           </svg>
-          
+
           {/* Letras TA */}
           <div className="relative z-10">
-            <span className="text-3xl font-serif font-bold text-black dark:text-white">TA</span>
+            <span className="font-display text-3xl font-bold text-foreground">TA</span>
           </div>
         </div>
       </div>

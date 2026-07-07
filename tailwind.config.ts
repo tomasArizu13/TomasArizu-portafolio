@@ -12,9 +12,21 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			display: ['var(--font-display)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			mono: ['var(--font-mono)', 'ui-monospace', 'SF Mono', 'Menlo', 'monospace'],
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			paper: 'var(--paper)',
+  			'paper-2': 'var(--paper-2)',
+  			ink: 'var(--ink)',
+  			faint: 'var(--faint)',
+  			line: 'var(--line)',
+  			verified: 'var(--verified)',
+  			'verified-bright': 'var(--verified-bright)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

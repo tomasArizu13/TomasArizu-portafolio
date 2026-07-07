@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomás Arizu — hero prototype v3 (WebGL)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+  :root{
+    --paper:#F4F5F2; --paper-2:#FBFBF9;
+    --ink:#16181B; --muted:#5C6167; --faint:#8A8F94; --line:#E1E3DE;
+    --verified:#2E6E52; --verified-bright:#2FA06A;
+    --display:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --body:"Inter", ui-sans-serif, system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);min-height:100vh;overflow-x:hidden;position:relative}
+  @media (hover:hover) and (pointer:fine){ body{cursor:none} }
+
+  #gl{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;display:block}
+  .grain{position:fixed;inset:0;opacity:.02;pointer-events:none;z-index:2;mix-blend-mode:multiply}
+
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:70;transform:translate(-50%,-50%);will-change:transform}
+  .cursor-dot{width:6px;height:6px;background:var(--ink)}
+  .cursor-ring{width:34px;height:34px;border:1px solid rgba(22,24,27,.35);transition:width .25s ease,height .25s ease,border-color .25s ease,background .25s ease}
+  .cursor-ring.hovering{width:52px;height:52px;border-color:var(--verified);background:rgba(46,110,82,.07)}
+  @media (hover:none),(pointer:coarse){ .cursor-dot,.cursor-ring{display:none} }
+
+  .bar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,5vw,64px);z-index:50}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.02em;font-weight:500}
+  .brand .dot{color:var(--verified)}
+  .pill{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:7px 13px;display:inline-flex;align-items:center;gap:8px;background:var(--paper-2);backdrop-filter:blur(4px)}
+  .pill .live{width:6px;height:6px;border-radius:50%;background:var(--verified);position:relative}
+  .pill .live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--verified);opacity:.5;animation:ping 2.4s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+
+  .hero{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:1120px;margin:0 auto;padding:120px clamp(20px,5vw,64px) 90px}
+  .veil{position:absolute;left:-10%;top:0;width:85%;height:100%;z-index:0;pointer-events:none;
+    background:radial-gradient(60% 55% at 32% 50%, var(--paper) 0%, rgba(244,245,242,.82) 42%, rgba(244,245,242,0) 78%)}
+  .hero > *:not(.veil){position:relative;z-index:1}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:26px}
+  h1{font-family:var(--display);font-weight:600;line-height:.98;letter-spacing:-.025em;font-size:clamp(2.6rem,7.4vw,6.2rem);max-width:14ch;margin-bottom:30px}
+  .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+  .wi{display:inline-block}
+  .wi[data-word]{position:relative}
+  .ul{position:absolute;left:0;right:0;bottom:.03em;height:.058em;background:var(--verified);transform:scaleX(1);transform-origin:left;border-radius:3px}
+  .sub{font-size:clamp(1rem,1.55vw,1.28rem);line-height:1.5;color:var(--muted);max-width:52ch;margin-bottom:44px;font-weight:400}
+
+  .spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:760px;margin-bottom:34px;box-shadow:0 1px 0 rgba(255,255,255,.6)}
+  .spec .cell{background:var(--paper-2);padding:16px 20px}
+  .spec .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+  .spec .v{font-family:var(--mono);font-size:13.5px;color:var(--ink);line-height:1.35}
+
+  .assert{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:20px 26px;align-items:center}
+  .assert .run{color:var(--faint)}
+  .a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+  .a .tick{color:var(--verified);font-weight:600;display:inline-block}
+
+  .hint{position:absolute;bottom:30px;right:clamp(20px,5vw,64px);z-index:3;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);opacity:.8}
+  .cue{position:absolute;bottom:30px;left:clamp(20px,5vw,64px);z-index:3;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .cue .track{width:44px;height:1px;background:var(--line);position:relative;overflow:hidden}
+  .cue .track::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;background:var(--ink);animation:slide 2.6s cubic-bezier(.7,0,.3,1) infinite}
+  @keyframes slide{0%{left:-45%}60%,100%{left:100%}}
+
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--verified);outline-offset:4px;border-radius:2px}
+
+  body.anim .wi{transform:translateY(112%)}
+  body.anim .ul{transform:scaleX(0)}
+  body.anim .js-fade{opacity:0;transform:translateY(14px)}
+  body.anim .a .tick{opacity:0;transform:scale(.4)}
+  body.anim .a .label{opacity:.35}
+
+  @media (max-width:680px){
+    .spec{grid-template-columns:1fr}
+    .hero{padding-top:110px}
+    .cue,.hint{display:none}
+    .bar .pill{display:none}
+    .veil{width:120%;left:-10%}
+  }
+  @media (prefers-reduced-motion:reduce){ .pill .live::after,.cue .track::after{animation:none} }
+</style>
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+  <div class="cursor-ring" id="ring"></div>
+  <div class="cursor-dot" id="dot"></div>
+
+  <header class="bar">
+    <div class="brand js-fade">Tomás Arizu<span class="dot">.</span></div>
+    <div class="pill js-fade" data-hover><span class="live"></span>Open to product roles</div>
+  </header>
+
+  <main class="hero">
+    <div class="veil"></div>
+    <div class="eyebrow js-fade">Product · UX · Engineering</div>
+    <h1 id="headline">
+      <span class="w"><span class="wi">I</span></span>
+      <span class="w"><span class="wi">build</span></span>
+      <span class="w"><span class="wi" data-word>products<i class="ul"></i></span></span>
+      <span class="w"><span class="wi">people</span></span>
+      <span class="w"><span class="wi">actually</span></span>
+      <span class="w"><span class="wi">want</span></span>
+      <span class="w"><span class="wi">to</span></span>
+      <span class="w"><span class="wi">use.</span></span>
+    </h1>
+    <p class="sub js-fade">Product-minded builder with a business degree and a technical backbone. I like the messy part — figuring out the real problem — and the craft of shipping the solution.</p>
+
+    <div class="spec">
+      <div class="cell js-fade"><div class="k">Now</div><div class="v">QA Automation Engineer · Luno</div></div>
+      <div class="cell js-fade"><div class="k">Education</div><div class="v">Digital Business · UdeSA</div></div>
+      <div class="cell js-fade"><div class="k">Looking for</div><div class="v">A product role — PM / Analyst / Owner</div></div>
+    </div>
+
+    <div class="assert">
+      <span class="run js-fade">running checks</span>
+      <span class="a"><span class="tick">✓</span><span class="label">product-minded</span></span>
+      <span class="a"><span class="tick">✓</span><span class="label">technical</span></span>
+      <span class="a"><span class="tick">✓</span><span class="label">validated before built</span></span>
+    </div>
+  </main>
+
+  <div class="cue"><span class="track"></span>Scroll</div>
+  <div class="hint">move · click to ping</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ================= WebGL sonar field ================= */
+  (function webgl(){
+    if(typeof THREE==="undefined") return;
+    var canvas=document.getElementById("gl");
+    var renderer;
+    try{ renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true}); }
+    catch(e){ canvas.style.display="none"; return; }
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    renderer.setPixelRatio(dpr);
+    renderer.setClearColor(0x000000,0);
+
+    var scene=new THREE.Scene();
+    var camera=new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 200);
+    camera.position.set(0,0,34);
+
+    // generous grid so it covers any aspect without rebuild
+    var SP=0.46, HX=32, HY=21;
+    var verts=[];
+    for(var y=-HY;y<=HY;y+=SP){ for(var x=-HX;x<=HX;x+=SP){ verts.push(x,y,0); } }
+    var geo=new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.Float32BufferAttribute(verts,3));
+
+    var uni={
+      uTime:{value:0}, uCursor:{value:new THREE.Vector2(0,0)}, uAmp:{value:1.0},
+      uSize:{value:4.0}, uPixelH:{value:innerHeight}, uDpr:{value:dpr},
+      uGrey:{value:new THREE.Color(0x9a9ea3)}, uGreen:{value:new THREE.Color(0x35b077)}
+    };
+    var mat=new THREE.ShaderMaterial({
+      uniforms:uni, transparent:true, depthWrite:false, depthTest:false,
+      blending:THREE.NormalBlending,
+      vertexShader:[
+        "uniform float uTime; uniform vec2 uCursor; uniform float uAmp; uniform float uSize; uniform float uPixelH; uniform float uDpr;",
+        "varying float vAct;",
+        "void main(){",
+        "  vec3 pos=position;",
+        "  vec2 d=pos.xy-uCursor; float dist=length(d);",
+        "  float ripple=sin(dist*0.85 - uTime*2.1)*exp(-dist*0.32);",
+        "  float bump=exp(-dist*dist*0.02);",
+        "  float amb=(sin(pos.x*0.16+uTime*0.6)+cos(pos.y*0.14-uTime*0.5))*0.32;",
+        "  float disp=amb + (ripple*0.9 + bump*1.5)*uAmp;",
+        "  pos.z+=disp;",
+        "  vAct=clamp(bump*1.3 + max(ripple,0.0)*uAmp, 0.0, 1.0);",
+        "  vec4 mv=modelViewMatrix*vec4(pos,1.0);",
+        "  gl_Position=projectionMatrix*mv;",
+        "  gl_PointSize=clamp((uSize+vAct*uSize*2.4)*(uPixelH/max(-mv.z,0.001))*0.020,1.2,18.0)*uDpr;",
+        "}"
+      ].join("\n"),
+      fragmentShader:[
+        "precision mediump float;",
+        "varying float vAct; uniform vec3 uGrey; uniform vec3 uGreen;",
+        "void main(){",
+        "  vec2 uv=gl_PointCoord-0.5;",
+        "  float c=smoothstep(0.5,0.14,length(uv));",
+        "  if(c<=0.003) discard;",
+        "  vec3 col=mix(uGrey,uGreen,vAct);",
+        "  gl_FragColor=vec4(col, c*(0.16 + vAct*0.82));",
+        "}"
+      ].join("\n")
+    });
+    var points=new THREE.Points(geo,mat);
+    scene.add(points);
+
+    var visH=1,visW=1;
+    function computeVis(){
+      visH=2*Math.tan(camera.fov*Math.PI/360)*camera.position.z;
+      visW=visH*camera.aspect;
+    }
+    function resize(){
+      camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth,innerHeight,false);
+      uni.uPixelH.value=innerHeight; computeVis();
+    }
+    addEventListener("resize",resize); resize();
+
+    // pointer (NDC)
+    var nx=0,ny=0,tx=0,ty=0, pulse=0;
+    if(fine){
+      addEventListener("mousemove",function(e){ tx=(e.clientX/innerWidth)*2-1; ty=-((e.clientY/innerHeight)*2-1); });
+      addEventListener("mousedown",function(){ pulse=1.0; });
+    }
+    var t0=performance.now();
+    function loop(now){
+      var t=(now-t0)/1000;
+      if(!fine){ tx=Math.cos(t*0.42)*0.55; ty=Math.sin(t*0.61)*0.45; }
+      nx+=(tx-nx)*0.06; ny+=(ty-ny)*0.06;
+      uni.uCursor.value.set(nx*visW*0.5, ny*visH*0.5);
+      pulse*=0.94;
+      uni.uAmp.value = 1.0 + pulse*1.6;
+      uni.uTime.value = t;
+      // subtle parallax tilt
+      points.rotation.x += (ny*0.14 - points.rotation.x)*0.05;
+      points.rotation.y += (nx*0.16 - points.rotation.y)*0.05;
+      renderer.render(scene,camera);
+      requestAnimationFrame(loop);
+    }
+    if(reduce){ uni.uAmp.value=0.35; renderer.render(scene,camera); }
+    else requestAnimationFrame(loop);
+  })();
+
+  /* ================= custom cursor ================= */
+  if(fine){
+    var cdot=document.getElementById("dot"), ring=document.getElementById("ring");
+    var mx=innerWidth/2,my=innerHeight/2,rrx=mx,rry=my;
+    addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;cdot.style.transform="translate("+mx+"px,"+my+"px) translate(-50%,-50%)";});
+    (function l(){rrx+=(mx-rrx)*.16;rry+=(my-rry)*.16;ring.style.transform="translate("+rrx+"px,"+rry+"px) translate(-50%,-50%)";requestAnimationFrame(l);})();
+    document.querySelectorAll("[data-hover]").forEach(function(el){
+      el.addEventListener("mouseenter",function(){ring.classList.add("hovering");});
+      el.addEventListener("mouseleave",function(){ring.classList.remove("hovering");});
+    });
+    var mag=document.querySelector(".pill");
+    if(mag){
+      mag.addEventListener("mousemove",function(e){var r=mag.getBoundingClientRect();gsap.to(mag,{x:(e.clientX-(r.left+r.width/2))*.25,y:(e.clientY-(r.top+r.height/2))*.35,duration:.4,ease:"power2.out"});});
+      mag.addEventListener("mouseleave",function(){gsap.to(mag,{x:0,y:0,duration:.5,ease:"elastic.out(1,.4)"});});
+    }
+  }
+
+  /* ================= intro ================= */
+  if(reduce || typeof gsap==="undefined"){ return; }
+  document.body.classList.add("anim");
+  var started=false;
+  function run(){
+    if(started) return; started=true;
+    var tl=gsap.timeline({defaults:{ease:"expo.out"}});
+    tl.to(".bar .js-fade",{y:0,opacity:1,duration:.9,stagger:.08},0)
+      .to(".eyebrow",{y:0,opacity:1,duration:.8},.1)
+      .to("#headline .wi",{y:"0%",duration:1.05,stagger:.055},.18)
+      .to(".ul",{scaleX:1,duration:.7,ease:"expo.out"},"-=.35")
+      .to(".sub",{y:0,opacity:1,duration:.9},"-=.7")
+      .to(".spec .js-fade",{y:0,opacity:1,duration:.7,stagger:.07},"-=.6")
+      .to(".assert .run",{y:0,opacity:1,duration:.6},"-=.4")
+      .to(".a .label",{opacity:1,duration:.35,stagger:.28},"-=.15")
+      .to(".a .tick",{opacity:1,scale:1,duration:.4,stagger:.28,ease:"back.out(2.5)"},"<");
+  }
+  window.addEventListener("load",run);
+  if(document.readyState==="complete") run();
+})();
+</script>
+</body>
+</html>

@@ -3,15 +3,135 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* tomasarizu.com design tokens — see tomasarizu-design-spec.md §1 */
+    --background: 80 13% 95%;        /* paper #F4F5F2 */
+    --foreground: 216 10% 10%;       /* ink #16181B */
+    --card: 60 20% 98%;              /* paper-2 #FBFBF9 */
+    --card-foreground: 216 10% 10%;
+    --popover: 60 20% 98%;
+    --popover-foreground: 216 10% 10%;
+    --primary: 154 41% 31%;          /* verified #2E6E52 */
+    --primary-foreground: 60 20% 98%;
+    --secondary: 84 8% 88%;          /* line #E1E3DE */
+    --secondary-foreground: 216 10% 10%;
+    --muted: 60 20% 98%;
+    --muted-foreground: 213 6% 38%;  /* muted #5C6167 */
+    --accent: 151 55% 41%;           /* verified-bright #2FA06A */
+    --accent-foreground: 60 20% 98%;
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 60 20% 98%;
+    --border: 84 8% 88%;             /* line #E1E3DE */
+    --input: 84 8% 88%;
+    --ring: 154 41% 31%;             /* verified — focus rings */
+    --radius: 0.5rem;
+
+    /* raw hex tokens for places that need the exact spec value */
+    --paper: #F4F5F2;
+    --paper-rgb: 244, 245, 242;
+    --paper-2: #FBFBF9;
+    --ink: #16181B;
+    --muted-hex: #5C6167;
+    --faint: #8A8F94;
+    --line: #E1E3DE;
+    --verified: #2E6E52;
+    --verified-bright: #2FA06A;
+  }
+
+  .dark {
+    --background: 216 10% 10%;
+    --foreground: 80 13% 95%;
+    --card: 216 12% 14%;
+    --card-foreground: 80 13% 95%;
+    --popover: 216 12% 14%;
+    --popover-foreground: 80 13% 95%;
+    --primary: 151 55% 41%;
+    --primary-foreground: 216 10% 10%;
+    --secondary: 216 10% 18%;
+    --secondary-foreground: 80 13% 95%;
+    --muted: 216 10% 16%;
+    --muted-foreground: 210 4% 56%;  /* faint */
+    --accent: 151 55% 41%;
+    --accent-foreground: 216 10% 10%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 80 13% 95%;
+    --border: 216 10% 20%;
+    --input: 216 10% 20%;
+    --ring: 151 55% 41%;
+
+    /* raw hex tokens, inverted for dark mode — these are what the hero's
+       bespoke CSS (.hero-eyebrow, .hero-veil, etc.) actually reads, so without
+       these overrides that CSS stays stuck at light-mode colors under .dark. */
+    --paper: #16181B;
+    --paper-rgb: 22, 24, 27;
+    --paper-2: #1E2126;
+    --ink: #F4F5F2;
+    --muted-hex: #9AA0A6;
+    --faint: #8A8F94;
+    --line: #2E3238;
+    --verified: #2E6E52;
+    --verified-bright: #2FA06A;
+  }
+
   /* Optimized theme transitions - exclude gradient elements */
+  /* scroll-behavior intentionally omitted: Lenis (smooth-scroll-provider.tsx) owns
+     smooth scrolling; native CSS smooth-scroll fights its transform-based approach.
+     Reduced-motion users get native instant scrolling since Lenis skips init for them. */
   html {
     @apply transition-colors duration-200 ease-in-out;
-    scroll-behavior: smooth;
   }
-  
+
   body {
     @apply transition-colors duration-200 ease-in-out;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Custom cursor — only active once JS confirms a fine pointer + no reduced-motion
+     (see components/custom-cursor.tsx). Gated by a JS-added class rather than a
+     bare media query so we never hide the native cursor without a replacement. */
+  @media (hover: hover) and (pointer: fine) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none;
+    }
+  }
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 70;
+    will-change: transform;
+  }
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--ink);
+  }
+  .cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(22, 24, 27, 0.35);
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .cursor-ring.hovering {
+    width: 52px;
+    height: 52px;
+    border-color: var(--verified);
+    background: rgba(46, 110, 82, 0.07);
   }
   
   /* Specific components that need smooth transitions - exclude gradient text */
@@ -76,6 +196,102 @@
 }
 
 @layer utilities {
+  .font-mono-label {
+    font-family: var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  .font-display-hero {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  /* ============ Hero — sonar prototype port ============ */
+  .hero-veil {
+    position: absolute; left: -10%; top: 0; width: 85%; height: 100%; pointer-events: none;
+    background: radial-gradient(60% 55% at 32% 50%, var(--paper) 0%, rgba(var(--paper-rgb), .82) 42%, rgba(var(--paper-rgb), 0) 78%);
+  }
+  @media (max-width: 680px) {
+    .hero-veil { width: 120%; left: -10%; }
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint);
+  }
+
+  .hero-pill {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-hex);
+    border: 1px solid var(--line); border-radius: 100px; padding: 7px 13px;
+    display: inline-flex; align-items: center; gap: 8px; background: var(--paper-2);
+  }
+  .hero-pill .live {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--verified); position: relative;
+  }
+  .hero-pill .live::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--verified);
+    opacity: .5; animation: heroPing 2.4s ease-out infinite;
+  }
+  @keyframes heroPing { 0% { transform: scale(.6); opacity: .6 } 100% { transform: scale(1.9); opacity: 0 } }
+  @media (prefers-reduced-motion: reduce) { .hero-pill .live::after { animation: none; } }
+
+  .hero-headline {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600; line-height: .98; letter-spacing: -.025em;
+    font-size: clamp(2.6rem, 7.4vw, 6.2rem); max-width: 14ch;
+  }
+  .hero-word-wrap { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; margin-bottom: -.06em; }
+  .hero-word { display: inline-block; }
+  .hero-word-underlined { position: relative; }
+  .hero-wave-letter {
+    display: inline-block;
+    background: linear-gradient(180deg, var(--verified) 0%, var(--verified-bright) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-underline {
+    position: absolute; left: 0; right: 0; bottom: .03em; height: .058em;
+    background: var(--verified); transform-origin: left; border-radius: 3px;
+  }
+
+  .hero-sub { font-size: clamp(1rem, 1.55vw, 1.28rem); line-height: 1.5; color: var(--muted-hex); max-width: 52ch; font-weight: 400; }
+
+  .hero-spec {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; max-width: 760px;
+  }
+  .hero-spec-cell { background: var(--paper-2); padding: 16px 20px; }
+  .hero-spec-k { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-bottom: 7px; }
+  .hero-spec-v { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13.5px; color: var(--ink); line-height: 1.35; }
+  @media (max-width: 680px) { .hero-spec { grid-template-columns: 1fr; } }
+
+  .hero-assert {
+    font-family: var(--font-mono), ui-monospace, monospace; font-size: 13px; color: var(--muted-hex);
+    display: flex; flex-wrap: wrap; gap: 20px 26px; align-items: center;
+  }
+  .hero-assert-run { color: var(--faint); }
+  .hero-assert-item { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .hero-assert-tick { color: var(--verified); font-weight: 600; display: inline-block; }
+
+  .hero-cue {
+    display: flex; align-items: center; gap: 12px; font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  }
+  .hero-cue-track { width: 44px; height: 1px; background: var(--line); position: relative; overflow: hidden; }
+  .hero-cue-track::after {
+    content: ""; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: var(--ink);
+    animation: heroSlide 2.6s cubic-bezier(.7, 0, .3, 1) infinite;
+  }
+  @keyframes heroSlide { 0% { left: -45% } 60%, 100% { left: 100% } }
+  @media (prefers-reduced-motion: reduce) { .hero-cue-track::after { animation: none; } }
+
+  .hero-hint { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); opacity: .8; }
+  @media (max-width: 680px) { .hero-cue, .hero-hint { display: none; } }
+  /* ============ /Hero ============ */
+
   @keyframes gradientShift {
     0%, 100% {
       background-position: 0% 50%;
