@@ -37,22 +37,6 @@ export default function Hero() {
     gsap.set(labels, { opacity: 0.35 })
     gsap.set(ticks, { opacity: 0, scale: 0.4 })
 
-    let waveTl: gsap.core.Timeline | null = null
-    function startWaveLoop() {
-      const letters = root!.querySelectorAll("[data-wave-letter]")
-      if (!letters.length) return
-      waveTl = gsap.timeline({ repeat: -1, repeatDelay: 3 })
-      waveTl.to(letters, {
-        y: -20,
-        scale: 1.15,
-        duration: 0.42,
-        ease: "power2.out",
-        stagger: { each: 0.06, from: "start" },
-        yoyo: true,
-        repeat: 1,
-      })
-    }
-
     const tl = gsap.timeline({ defaults: { ease: "expo.out" } })
     tl.to(pill, { opacity: 1, y: 0, duration: 0.9 }, 0)
       .to(eyebrow, { opacity: 1, y: 0, duration: 0.8 }, 0.1)
@@ -63,11 +47,9 @@ export default function Hero() {
       .to(assertRun, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
       .to(labels, { opacity: 1, duration: 0.35, stagger: 0.28 }, "-=0.15")
       .to(ticks, { opacity: 1, scale: 1, duration: 0.4, stagger: 0.28, ease: "back.out(2.5)" }, "<")
-      .call(startWaveLoop)
 
     return () => {
       tl.kill()
-      waveTl?.kill()
     }
   }, [])
 
@@ -107,7 +89,11 @@ export default function Hero() {
                         <span className="sr-only">{word}</span>
                         <span aria-hidden="true">
                           {word.split("").map((char, ci) => (
-                            <span key={ci} className="hero-wave-letter" data-wave-letter>
+                            <span
+                              key={ci}
+                              className="hero-wave-letter"
+                              style={{ "--i": ci } as React.CSSProperties}
+                            >
                               {char}
                             </span>
                           ))}

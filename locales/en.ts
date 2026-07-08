@@ -164,7 +164,7 @@ const en = {
     title: "Now",
     subtitle: "What I'm doing, and where I'm headed",
     letsConnect: "Right Now",
-    letsConnectDesc: "Wrapping up my Digital Business studies at UdeSA, keeping products healthy at Luno, and looking for a product role — PM, Product Analyst, or Product Owner — where I can own outcomes. If you're building something interesting, I'd love to talk.",
+    letsConnectDesc: "I graduated with a degree in Digital Business from UdeSA, and now work as a QA Automation Engineer — deep inside the product every day, always learning, and always looking at things from the user's side. I'm looking for a product role — PM, Product Analyst, or Product Owner — where I can own outcomes. If you're building something interesting, I'd love to talk.",
     emailLabel: "Email",
     emailValue: "tomasarizu13@gmail.com",
     linkedinLabel: "LinkedIn",

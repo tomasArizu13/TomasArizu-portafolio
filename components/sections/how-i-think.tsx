@@ -24,21 +24,38 @@ export default function HowIThink() {
     if (reduce) return
 
     const ticks = section.querySelectorAll("[data-tick]")
-    if (!ticks.length) return
+    const cards = section.querySelectorAll<HTMLElement>("[data-principle-card]")
+    if (!ticks.length && !cards.length) return
+
     gsap.set(ticks, { opacity: 0, scale: 0.4 })
+    gsap.set(cards, {
+      opacity: 0,
+      y: 48,
+      scale: 0.92,
+      rotate: (i) => (i % 2 === 0 ? -4 : 4),
+    })
 
     const trigger = ScrollTrigger.create({
       trigger: section,
       start: "top 80%",
       once: true,
       onEnter: () => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotate: 0,
+          duration: 0.85,
+          ease: "back.out(1.6)",
+          stagger: 0.15,
+        })
         gsap.to(ticks, {
           opacity: 1,
           scale: 1,
           duration: 0.5,
           ease: "back.out(2.5)",
           stagger: 0.15,
-          delay: 0.3,
+          delay: 0.35,
         })
       },
     })
@@ -56,7 +73,7 @@ export default function HowIThink() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {t.howIThink.principles.map((principle) => (
-            <Card key={principle.title} className="h-full" data-reveal>
+            <Card key={principle.title} className="h-full" data-principle-card>
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold mb-3 text-foreground flex items-center gap-2">
                   <span className="text-verified" data-tick>✓</span>

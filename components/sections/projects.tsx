@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,12 @@ import { ExternalLink, Github, Eye } from "lucide-react"
 import Image from "next/image"
 import { useTranslation } from "@/components/language-context"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 type Project = {
   id: number
@@ -30,6 +36,26 @@ export default function Projects() {
 
   useScrollReveal(sectionRef, { stagger: 0.12 })
 
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduce) return
+
+    const images = section.querySelectorAll<HTMLElement>("[data-project-image]")
+    const triggers = Array.from(images).map((img) =>
+      ScrollTrigger.create({
+        trigger: img,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.7,
+        onUpdate: (self) => gsap.set(img, { y: (self.progress - 0.5) * 32 }),
+      }),
+    )
+
+    return () => triggers.forEach((trigger) => trigger.kill())
+  }, [])
+
   return (
     <section id="projects" ref={sectionRef} className="py-20 bg-muted">
       <div className="container mx-auto px-4">
@@ -44,14 +70,15 @@ export default function Projects() {
           {projects.map((project) => (
             <div key={project.id} data-reveal>
               <Card className="group h-full border-border transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={400}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute -inset-y-4 inset-x-0" data-project-image>
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/70 transition-colors duration-300 flex items-end justify-center pb-4">
                     <Button
                       size="sm"

@@ -9,10 +9,12 @@ import Education from "@/components/sections/education"
 import Contact from "@/components/sections/contact"
 import Footer from "@/components/sections/footer"
 import Navigation from "@/components/navigation"
+import ScrollProgress from "@/components/scroll-progress"
 
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">
+      <ScrollProgress />
       <Navigation />
       <main className="relative">
         <Hero />

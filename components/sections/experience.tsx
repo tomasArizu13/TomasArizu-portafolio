@@ -1,11 +1,17 @@
 "use client"
 
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Building, Calendar, MapPin } from "lucide-react"
 import { useTranslation } from "@/components/language-context"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -13,6 +19,27 @@ export default function Experience() {
   const experiences = t.experience.items
 
   useScrollReveal(sectionRef, { stagger: 0.15 })
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const track = section.querySelector<HTMLElement>("[data-exp-track]")
+    const fill = section.querySelector<HTMLElement>("[data-exp-fill]")
+    if (!track || !fill) return
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduce) return
+
+    const trigger = ScrollTrigger.create({
+      trigger: track,
+      start: "top 75%",
+      end: "bottom 55%",
+      scrub: 0.6,
+      onUpdate: (self) => gsap.set(fill, { scaleY: self.progress }),
+    })
+
+    return () => trigger.kill()
+  }, [])
 
   return (
     <section id="experience" ref={sectionRef} className="py-20 bg-background">
@@ -24,9 +51,15 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto exp-track" data-exp-track>
+          <div className="exp-line" aria-hidden="true">
+            <div className="exp-line-fill" data-exp-fill />
+          </div>
+          <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <Card key={index} className="border-border" data-reveal>
+            <div key={index} className="relative pl-10 md:pl-12" data-reveal>
+            <span className="exp-dot" aria-hidden="true" />
+            <Card className="border-border">
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
@@ -63,7 +96,9 @@ export default function Experience() {
                 </div>
               </CardContent>
             </Card>
+            </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
