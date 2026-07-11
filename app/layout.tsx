@@ -31,8 +31,11 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: 'Tomas Arizu - Product & Tech Builder',
-  description: 'Portfolio de Tomas Arizu - Desarrollador de productos y tecnología',
-  generator: 'v0.dev',
+  description: 'Product-minded builder. QA Automation Engineer at Luno. I build and validate products people actually want to use.',
+  openGraph: {
+    title: 'Tomas Arizu - Product & Tech Builder',
+    description: 'Product-minded builder. QA Automation Engineer at Luno. I build and validate products people actually want to use.',
+  },
 }
 
 export default function RootLayout({

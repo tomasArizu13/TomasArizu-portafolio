@@ -108,6 +108,7 @@
   }
   .cursor-dot,
   .cursor-ring {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -115,6 +116,10 @@
     pointer-events: none;
     z-index: 70;
     will-change: transform;
+  }
+  html.has-custom-cursor .cursor-dot,
+  html.has-custom-cursor .cursor-ring {
+    display: block;
   }
   .cursor-dot {
     width: 6px;

@@ -83,10 +83,10 @@ export default function Hero() {
                   <span
                     className={`hero-word ${isUnderlined ? "hero-word-underlined" : ""}`}
                     data-hero-word
+                    aria-label={isUnderlined ? word : undefined}
                   >
                     {isUnderlined ? (
                       <>
-                        <span className="sr-only">{word}</span>
                         <span aria-hidden="true">
                           {word.split("").map((char, ci) => (
                             <span
@@ -98,7 +98,6 @@ export default function Hero() {
                             </span>
                           ))}
                         </span>
-                        <i className="hero-underline" data-hero-underline />
                       </>
                     ) : (
                       word

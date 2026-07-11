@@ -11,11 +11,11 @@ const en = {
     pill: "Open to product roles",
     headlineWords: ["I", "build", "products", "people", "actually", "want", "to", "use."],
     headlineUnderlineIndex: 2,
-    description: "Product-minded builder with a business degree and a technical backbone. I like the messy part — figuring out the real problem — and the craft of shipping the solution.",
+    description: "Product-minded builder with a business degree and a technical backbone. I like the messy part, figuring out the real problem, and the craft of shipping the solution.",
     spec: [
       { k: "Now", v: "QA Automation Engineer · Luno" },
       { k: "Education", v: "Digital Business · UdeSA" },
-      { k: "Looking for", v: "A product role — PM / Analyst / Owner" }
+      { k: "Looking for", v: "A product role: PM / Analyst / Owner" }
     ],
     assertionsLabel: "running checks",
     assertions: ["product-minded", "technical", "validated before built"],
@@ -26,8 +26,8 @@ const en = {
     title: "About Me",
     subtitle: "What I've built, why I care about product, and how I got here",
     hi: "Hi, I'm Tomas Arizu",
-    content1: "I studied Digital Business at Universidad de San Andrés — but I learned the most by building. I've shipped MVPs, validated ideas with real users before writing a line of code, and today I keep a multi-platform product healthy as QA Automation Engineer at Luno. That role lets me see products from the inside: what breaks, where users get stuck, and what actually matters to ship.",
-    content2: "What pulls me in is the full loop of product — talking to users, finding the real problem, deciding what's worth building, and sweating the details until it feels right. I'm comfortable on both sides: I can talk strategy with stakeholders and read the codebase with the devs.",
+    content1: "I studied Digital Business at Universidad de San Andrés, but I learned the most by building. I've shipped MVPs, validated ideas with real users before writing a line of code, and today I keep a multi-platform product healthy as QA Automation Engineer at Luno. That role lets me see products from the inside: what breaks, where users get stuck, and what actually matters to ship.",
+    content2: "What pulls me in is the full loop of product: talking to users, finding the real problem, deciding what's worth building, and sweating the details until it feels right. I'm comfortable on both sides: I can talk strategy with stakeholders and read the codebase with the devs.",
     content3: "Co-founded OneBite, a premium dining club, and validated it with 60+ real users before building.",
     keypoints: [
       "Product Discovery & Validation",
@@ -42,7 +42,7 @@ const en = {
       { category: "Technical / Testing", items: ["Playwright (TypeScript, POM)", "Maestro", "Test-case design", "Bug reporting", "Cross-platform testing"] },
       { category: "Technologies", items: ["TypeScript/JavaScript", "React", "Next.js", "SQL (basic)", "Python (basic)", "Three.js / React Three Fiber", "Solana / web3"] },
       { category: "Tools", items: ["Linear", "Notion", "Jira", "Figma", "GitHub"] },
-      { category: "Languages", items: ["Spanish (native)", "English (C1 — Cambridge)"] }
+      { category: "Languages", items: ["Spanish (native)", "English (C1 · Cambridge)"] }
     ]
   },
   howIThink: {
@@ -55,7 +55,7 @@ const en = {
       },
       {
         title: "The user is the whole point.",
-        body: "My QA work trained me to obsess over the real experience — where people get confused, where the flow breaks, what makes something feel effortless."
+        body: "My QA work trained me to obsess over the real experience: where people get confused, where the flow breaks, what makes something feel effortless."
       },
       {
         title: "Ship, then learn.",
@@ -65,7 +65,7 @@ const en = {
   },
   experience: {
     title: "Experience",
-    subtitle: "My professional journey and the experiences that shaped my expertise",
+    subtitle: "Where I've worked",
     items: [
       {
         title: "QA Automation Engineer",
@@ -74,7 +74,7 @@ const en = {
         period: "Jan 2026 – Present",
         bullets: [
           "Ensure product quality across three platforms: Creator Hub (content creators), Adapt (a ChatGPT-style assistant), and Adium Pro (pharmaceutical).",
-          "Act as the bridge between developers, design, and the client — detecting, documenting, and prioritizing issues, and translating needs into what to fix first.",
+          "Act as the bridge between developers, design, and the client: detecting, documenting, and prioritizing issues, and translating needs into what to fix first.",
           "Built the test automation from scratch (Playwright + Maestro), with cross-platform coverage.",
           "Contributed feedback on product and UX decisions alongside the Head of Product."
         ],
@@ -95,8 +95,9 @@ const en = {
   },
   projects: {
     title: "Featured Projects",
-    subtitle: "A few of the strongest — problem, what I did, and the outcome",
+    subtitle: "What I've built",
     liveDemo: "Live Demo",
+    github: "GitHub",
     viewDetails: "View Details",
     viewLive: "View Live Site",
     sourceCode: "Source Code",
@@ -107,7 +108,7 @@ const en = {
     items: [
       {
         id: 1,
-        title: "Lendit — Credit-Fund Manager for SMBs",
+        title: "Lendit: Credit-Fund Manager for SMBs",
         problem: "Small and medium businesses in Argentina struggle to access working capital through traditional credit channels.",
         action: "Designed the end-to-end web prototype and led the demo-day pitch for a credit-fund manager built for SMBs, as my undergraduate thesis project.",
         outcome: "A working prototype and pitch that carried the project through demo day.",
@@ -118,20 +119,20 @@ const en = {
       },
       {
         id: 2,
-        title: "OneBite — Premium Dining Club (Co-Founded)",
+        title: "OneBite: Premium Dining Club (Co-Founded)",
         problem: "People looking for high-end, multisensory dining experiences had no dedicated way to discover or access them.",
         action: "Identified the opportunity and validated demand with 60+ surveys of potential members before writing a line of code, then designed the membership structure, benefits, and landing experience.",
-        outcome: "A live landing page at onebiteclub.com validated by strong survey demand — the club itself never got past that stage.",
+        outcome: "Strong survey demand validated the concept; we chose not to take the club further.",
         image: "/onebiteclub-screenshot.png",
         technologies: ["React", "Next.js", "Tailwind CSS", "Vercel"],
         liveUrl: "https://www.onebiteclub.com/"
       },
       {
         id: 3,
-        title: "RealSync — AI Assistant for Real Estate",
-        problem: "Real estate agents lose momentum when they can't respond to leads immediately.",
-        action: "Designed and built the landing page and demo experience for RealSync, a conversational AI assistant that qualifies leads and answers real estate questions instantly.",
-        outcome: "A working demo showing how an always-on assistant could plug into an agency's lead flow.",
+        title: "RealSync: Real Estate Ops & AI Assistant",
+        problem: "Real estate agencies had no clear view of their own operations, and agents lost momentum when they couldn't respond to leads immediately.",
+        action: "Designed and built RealSync: operational dashboards giving the team a real-time view of performance, plus a conversational AI assistant that qualifies leads and answers real estate questions instantly.",
+        outcome: "Cut reporting time by ~30%, improved team efficiency by ~15%, and gave the agency an always-on assistant for its lead flow.",
         image: "/realsync-screenshot.png",
         technologies: ["Next.js", "Tailwind CSS", "Vercel", "React"],
         liveUrl: "https://real-sync-phi.vercel.app/",
@@ -141,7 +142,7 @@ const en = {
   },
   education: {
     title: "Education",
-    subtitle: "Where the fundamentals came from",
+    subtitle: "Where I studied",
     items: [
       {
         degree: "Digital Business",
@@ -172,7 +173,7 @@ const en = {
     githubLabel: "GitHub",
     githubValue: "github.com/tomasArizu13",
     ctaTitle: "Let's Talk",
-    ctaDesc: "Email, LinkedIn, or GitHub — whichever's easiest for you.",
+    ctaDesc: "Email, LinkedIn, or GitHub, whichever's easiest for you.",
     ctaButton: "Email Me"
   },
   footer: {

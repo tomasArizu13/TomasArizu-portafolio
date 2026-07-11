@@ -119,9 +119,10 @@ export default function Projects() {
                       </a>
                     )}
                     {project.githubUrl && (
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Button size="icon" variant="outline" className="w-10 h-10">
-                          <Github className="w-4 h-4" />
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                        <Button size="lg" variant="outline" className="w-full bg-transparent">
+                          <Github className="w-4 h-4 mr-2" />
+                          {t.projects.github}
                         </Button>
                       </a>
                     )}
